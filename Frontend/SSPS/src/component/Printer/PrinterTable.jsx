@@ -1,6 +1,5 @@
 import React from "react";
 
-
 export default function PrinterTable() {
     const data = [
         { name: "DeshJet 2734e", status: "Đã kích hoạt", state: "Đang chạy", ip: "10.0.1.202", location: "B4.402", lastUsed: "18/10/2024 6:15 CH" },
