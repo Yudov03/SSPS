@@ -201,6 +201,31 @@
   font-size: 14px;
   color: #888;
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.pagination-button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.pagination-button.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.pagination-button:hover {
+  background-color: #e0e0e0;
+}
+
  /* css cho cái trang addprinter */
 /* Box bọc bên ngoài */
 .add-printer-container {
