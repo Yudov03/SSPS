@@ -5,4 +5,5 @@
         { "name": "Sawgrass SG500", "status": "Chưa kích hoạt", "condition": "Bảo trì", "ip": "10.0.1.132", "location": "C6.104", "lastUsed": "16/10/2024 8:01 CH", "statusClass": "inactive"},
         { "name": "Smart Tank 5101", "status": "Chưa kích hoạt", "condition": "Không sử dụng", "ip": "10.0.1.837", "location": "A5.101", "lastUsed": "05/10/2024 11:32 SA", "statusClass": "inactive"}
     ]
+    // post dô đây 
 }
