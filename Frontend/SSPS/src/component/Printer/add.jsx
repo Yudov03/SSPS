@@ -101,6 +101,6 @@ export default function AddPrinter({ addPrinter }) {
           Lưu
         </button>
       </div>
-    </div>
+    
   );
 }
