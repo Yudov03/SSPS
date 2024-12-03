@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AxiosInstance from "../Axios";
-
+//thêm dòng này để upadte git cho vui
 export default function PrinterTable() {
   // State cho danh sách máy in (dữ liệu gốc) và danh sách hiển thị
   const [allPrinters, setAllPrinters] = useState([]); // Dữ liệu từ server
