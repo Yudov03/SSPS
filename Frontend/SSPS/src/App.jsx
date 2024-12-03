@@ -1,36 +1,55 @@
-import React from 'react'
-import { Routes, Route} from 'react-router-dom'
-import './App.css'
-import SideNavigation from './component/SideNav/nav'
-import Printer from './component/Printer/printer'
-import Dashboard from './component/Dashboard/dashboard'
-import Student from './component/student'
-import Setting from './component/setting'
-import Help from './component/help'
-import Config from './component/config'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/js/bootstrap.bundle.js'
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'
-import 'bootstrap-icons/font/bootstrap-icons.css'
-import AddPrinter from './component/Printer/add'
+import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import SideNavigation from "./component/SideNav/nav";
+import Printer from "./component/Printer/printer";
+import AddPrinter from "./component/Printer/add";
+import AxiosInstance from "./component/Axios";
 
 function App() {
+  // State để quản lý danh sách máy in
+  const [printers, setPrinters] = useState([]);
+
+  // Lấy danh sách máy in từ API
+  const fetchPrinters = async () => {
+    try {
+      const response = await AxiosInstance.get("/printers");
+      setPrinters(response.data);
+    } catch (error) {
+      console.error("Lỗi khi lấy dữ liệu máy in:", error);
+    }
+  };
+
+  // Thêm máy in mới vào API
+  const addPrinter = async (newPrinter) => {
+    try {
+      const response = await AxiosInstance.post("/printers", newPrinter);
+      setPrinters((prevPrinters) => [...prevPrinters, response.data]);
+    } catch (error) {
+      console.error("Lỗi khi thêm máy in mới:", error);
+    }
+  };
+
+  // Tải danh sách máy in khi component mount
+  useEffect(() => {
+    fetchPrinters();
+  }, []);
+
   return (
-    
     <SideNavigation
       content={
         <Routes>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path='/printer' element={<Printer />} />
-            <Route path='/printer/add' element={<AddPrinter />} />
-            <Route path='/student' element={<Student />} />
-            <Route path='/config' element={<Config />} />
-            <Route path='/help' element={<Help />} />
-            <Route path='/setting' element={<Setting />} />
+          <Route
+            path="/printer"
+            element={<Printer printers={printers} setPrinters={setPrinters} />}
+          />
+          <Route
+            path="/printer/add"
+            element={<AddPrinter addPrinter={addPrinter} />}
+          />
         </Routes>
       }
     />
-  )
+  );
 }
 
-export default App
+export default App;

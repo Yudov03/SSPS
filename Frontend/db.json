@@ -1,8 +1,120 @@
 {
-    "printers": [
-        {"name": "DeskJet 2734e", "status": "Đã kích hoạt", "condition": "Đang chạy", "ip": "10.0.1.202", "location": "B4.402", "lastUsed": "18/10/2024 6:15 CH", "statusClass": "active"},
-        {"name": "MAXIFY GX5070", "status": "Đã kích hoạt", "condition": "Sẵn sàng", "ip": "10.0.0.163", "location": "A4.302", "lastUsed": "18/10/2024 11:52 SA", "statusClass": "active"},
-        { "name": "Sawgrass SG500", "status": "Chưa kích hoạt", "condition": "Bảo trì", "ip": "10.0.1.132", "location": "C6.104", "lastUsed": "16/10/2024 8:01 CH", "statusClass": "inactive"},
-        { "name": "Smart Tank 5101", "status": "Chưa kích hoạt", "condition": "Không sử dụng", "ip": "10.0.1.837", "location": "A5.101", "lastUsed": "05/10/2024 11:32 SA", "statusClass": "inactive"}
-    ]
+  "printers": [
+    {
+      "name": "DeskJet 2734e",
+      "status": "Đã kích hoạt",
+      "condition": "Đang chạy",
+      "ip": "10.0.1.202",
+      "location": "B4.402",
+      "lastUsed": "18/10/2024 6:15 CH",
+      "statusClass": "active"
+    },
+    {
+      "name": "MAXIFY GX5070",
+      "status": "Đã kích hoạt",
+      "condition": "Sẵn sàng",
+      "ip": "10.0.0.163",
+      "location": "A4.302",
+      "lastUsed": "18/10/2024 11:52 SA",
+      "statusClass": "active"
+    },
+    {
+      "name": "Sawgrass SG500",
+      "status": "Chưa kích hoạt",
+      "condition": "Bảo trì",
+      "ip": "10.0.1.132",
+      "location": "C6.104",
+      "lastUsed": "16/10/2024 8:01 CH",
+      "statusClass": "inactive"
+    },
+    {
+      "name": "Smart Tank 5101",
+      "status": "Chưa kích hoạt",
+      "condition": "Không sử dụng",
+      "ip": "10.0.1.837",
+      "location": "A5.101",
+      "lastUsed": "05/10/2024 11:32 SA",
+      "statusClass": "inactive"
+    },
+    {
+      "id": "45ef",
+      "name": "abc",
+      "status": "Chưa kích hoạt",
+      "condition": "Sẵn sàng",
+      "ip": "123",
+      "location": "f5",
+      "lastUsed": "03/12/2024, 16:44:26",
+      "statusClass": "inactive"
+    },
+    {
+      "id": "934c",
+      "name": "duy hieu",
+      "status": "Đã kích hoạt",
+      "condition": "Sẵn sàng",
+      "ip": "1910",
+      "location": "a10",
+      "lastUsed": "03/12/2024, 17:23:29",
+      "statusClass": "active"
+    },
+    {
+      "id": "12a5",
+      "name": "duyvo",
+      "status": "Chưa kích hoạt",
+      "condition": "Sẵn sàng",
+      "ip": "1111",
+      "location": "d5",
+      "lastUsed": "03/12/2024, 17:37:14",
+      "statusClass": "inactive"
+    },
+    {
+      "id": "bd7b",
+      "name": "hieuvo",
+      "status": "Đã kích hoạt",
+      "condition": "Sẵn sàng",
+      "ip": "123",
+      "location": "f8",
+      "lastUsed": "03/12/2024, 17:37:42",
+      "statusClass": "active"
+    },
+    {
+      "id": "4fe3",
+      "name": "ádf",
+      "status": "Đã kích hoạt",
+      "condition": "Sẵn sàng",
+      "ip": "666",
+      "location": "234",
+      "lastUsed": "03/12/2024, 18:01:24",
+      "statusClass": "active"
+    },
+    {
+      "id": "d085",
+      "name": "hdsa",
+      "status": "Đã kích hoạt",
+      "condition": "Sẵn sàng",
+      "ip": "456",
+      "location": "df",
+      "lastUsed": "03/12/2024, 18:02:02",
+      "statusClass": "active"
+    },
+    {
+      "id": "9230",
+      "name": "jkl",
+      "status": "Đã kích hoạt",
+      "condition": "Sẵn sàng",
+      "ip": "2234",
+      "location": "t6",
+      "lastUsed": "03/12/2024, 18:18:40",
+      "statusClass": "active"
+    },
+    {
+      "id": "fc4c",
+      "name": "hieu.voduy",
+      "status": "Chưa kích hoạt",
+      "condition": "Sẵn sàng",
+      "ip": "1910",
+      "location": "hcmut",
+      "lastUsed": "03/12/2024, 18:27:03",
+      "statusClass": "inactive"
+    }
+  ]
 }

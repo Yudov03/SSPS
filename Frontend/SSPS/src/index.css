@@ -1,4 +1,5 @@
 /* Container chính */
+  
 .printer-management {
   margin: 20px auto;
   padding: 20px;
@@ -200,3 +201,254 @@
   font-size: 14px;
   color: #888;
 }
+ /* css cho cái trang addprinter */
+/* Box bọc bên ngoài */
+.add-printer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background-color: #f8f9fa; /* Tone nền sáng */
+  border-radius: 8px; /* Bo góc */
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+  position: relative; /* Để có thể căn nút Hủy ở góc trên */
+}
+
+h2 {
+  color: #0044cc; /* Màu tiêu đề xanh dương */
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 40px;
+}
+
+.form-group-left,
+.form-group-right {
+  flex: 1;
+}
+
+.form-group-left {
+  /* Để ảnh và chế độ hoạt động bên trái */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.form-group-right {
+  /* Để các trường nhập liệu bên phải */
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: #333; /* Màu chữ của nhãn */
+  width: 200px;
+}
+
+.form-group input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+  max-width: 400px;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  border-color: #0044cc; /* Màu viền khi focus */
+  outline: none;
+}
+
+.image-preview {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.image-preview img {
+  max-width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #0044cc; /* Màu xanh dương viền ảnh */
+}
+
+.input-file-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.input-file-wrapper input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 2px dashed #0044cc; /* Đường viền dashed xanh dương */
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.input-file-wrapper input:hover {
+  border-color: #0033aa; /* Màu viền khi hover */
+}
+
+/* Phần công tắc */
+/* Container cho dropdown */
+.status-dropdown {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label của dropdown */
+.status-dropdown label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Style cho select (dropdown) */
+.status-dropdown select {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect cho dropdown */
+.status-dropdown select:hover {
+  border-color: #007bff; /* Màu viền khi hover */
+  cursor: pointer;
+}
+
+/* Focus effect khi người dùng click vào dropdown */
+.status-dropdown select:focus {
+  outline: none; 
+  border-color: #0056b3; 
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+}
+
+/* Style cho các option trong dropdown */
+.status-dropdown select option {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+  transition: background-color 0.2s ease;
+}
+
+/* Hover effect cho option */
+.status-dropdown select option:hover {
+  background-color: #f1f1f1;
+}
+
+/* Style cho select khi có giá trị được chọn */
+.status-dropdown select:valid {
+  background-color: #e9ecef; 
+}
+
+
+/* Các nút */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.button-group .button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  max-width: 250px;
+  margin-bottom: 15px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Nút Lưu - Màu xanh dương */
+.button-group .button.save {
+  background-color: #007bff; /* Màu xanh dương */
+  color: white;
+}
+
+.button-group .button.save:hover {
+  background-color: #0056b3; /* Màu xanh đậm khi hover */
+  transform: scale(1.05);
+}
+
+/* Nút Hủy - Nhỏ hơn và góc phải */
+.button-group .button.cancel {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 8px 16px; /* Nút hủy nhỏ hơn */
+  background-color: #ff4136; /* Màu đỏ */
+  color: white;
+  border-radius: 6px;
+  font-size: 14px;
+  width: auto;
+}
+
+.button-group .button.cancel:hover {
+  background-color: #e63946; /* Màu đỏ đậm khi hover */
+  transform: scale(1.05);
+}
+
+
+/*  cái nút thêm máy in  */
+.btn.btn-primary {
+  display: inline-block;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #007bff; /* Màu xanh chủ đạo */
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
+}
+
+.btn.btn-primary:hover {
+  background-color: #0056b3; /* Màu xanh đậm hơn khi hover */
+  transform: translateY(-2px); /* Hiệu ứng nổi lên khi hover */
+  box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
+}
+
+.btn.btn-primary:active {
+  background-color: #004085; /* Màu xanh đậm nhất khi nhấn */
+  transform: translateY(0); /* Quay về vị trí ban đầu khi nhấn */
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+}
+
+

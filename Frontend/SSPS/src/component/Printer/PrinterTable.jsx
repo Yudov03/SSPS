@@ -2,34 +2,54 @@ import React, { useState, useEffect } from "react";
 import AxiosInstance from "../Axios";
 
 export default function PrinterTable() {
+  // State cho danh sách máy in (dữ liệu gốc) và danh sách hiển thị
+  const [allPrinters, setAllPrinters] = useState([]); // Dữ liệu từ server
+  const [filteredPrinters, setFilteredPrinters] = useState([]); // Dữ liệu hiển thị
   
-  // State cho danh sách hiển thị, giá trị tìm kiếm và trạng thái lọc
-  const [printers, setPrinters] = useState([]);
-    useEffect(() => {
-        AxiosInstance.get(`printers/`)
-            .then(res => setPrinters(res.data))
-            .catch(err => console.log(err));
-    }, [])
+  // State cho tìm kiếm và lọc
   const [searchTerm, setSearchTerm] = useState("");
   const [filterStatus, setFilterStatus] = useState("all"); // Lọc theo trạng thái
 
-  // Hàm xử lý tìm kiếm
-  const handleSearch = () => {
-    const filteredPrinters = printerData.filter((printer) =>
-      printer.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setPrinters(filteredPrinters);
+  // Lấy dữ liệu từ API khi component được mount
+  useEffect(() => {
+    AxiosInstance.get(`printers/`)
+      .then((res) => {
+        setAllPrinters(res.data);
+        setFilteredPrinters(res.data); // Hiển thị tất cả ban đầu
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  // Hàm cập nhật danh sách hiển thị (kết hợp tìm kiếm và lọc)
+  const updateFilteredPrinters = () => {
+    let updatedPrinters = [...allPrinters];
+
+    // Tìm kiếm
+    if (searchTerm) {
+      updatedPrinters = updatedPrinters.filter((printer) =>
+        printer.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    // Lọc trạng thái
+    if (filterStatus === "active") {
+      updatedPrinters = updatedPrinters.filter((printer) => printer.statusClass === "active");
+    } else if (filterStatus === "inactive") {
+      updatedPrinters = updatedPrinters.filter((printer) => printer.statusClass === "inactive");
+    }
+
+    setFilteredPrinters(updatedPrinters);
   };
 
-  // Hàm xử lý lọc theo trạng thái
-  const handleFilter = () => {
-    if (filterStatus === "active") {
-      setPrinters(printerData.filter((printer) => printer.statusClass === "active"));
-    } else if (filterStatus === "inactive") {
-      setPrinters(printerData.filter((printer) => printer.statusClass === "inactive"));
-    } else {
-      setPrinters(printerData); // Hiển thị tất cả máy in nếu chọn "all"
-    }
+  // Xử lý khi người dùng nhấn nút "Tìm kiếm"
+  const handleSearch = () => {
+    updateFilteredPrinters();
+  };
+
+  // Xử lý khi người dùng thay đổi trạng thái lọc
+  const handleFilterChange = (e) => {
+    setFilterStatus(e.target.value);
+    updateFilteredPrinters();
   };
 
   return (
@@ -50,15 +70,12 @@ export default function PrinterTable() {
         <select
           className="mode-select"
           value={filterStatus}
-          onChange={(e) => setFilterStatus(e.target.value)}
+          onChange={handleFilterChange}
         >
           <option value="all">Tất cả máy in</option>
           <option value="active">Máy in đang hoạt động</option>
           <option value="inactive">Máy in không hoạt động</option>
         </select>
-        <button className="view-printers-button" onClick={handleFilter}>
-          Xem máy in
-        </button>
       </div>
 
       {/* Bảng máy in */}
@@ -76,8 +93,8 @@ export default function PrinterTable() {
             </tr>
           </thead>
           <tbody>
-            {printers.length > 0 ? (
-              printers.map((printer, index) => (
+            {filteredPrinters.length > 0 ? (
+              filteredPrinters.map((printer, index) => (
                 <tr key={index}>
                   <td>{printer.name}</td>
                   <td className={printer.statusClass}>{printer.status}</td>
