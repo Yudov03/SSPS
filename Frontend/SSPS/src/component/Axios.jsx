@@ -13,13 +13,13 @@ const AxiosInstance = axios.create({
 
 AxiosInstance.interceptors.request.use(
     (config) => {
-        const token = localStorage.getItem('Token')
-        if(token){
-            config.headers.Authorization = `Token ${token}`
-        }
-        else{
-            config.headers.Authorization = ``
-        }
+        // const token = localStorage.getItem('Token')
+        // if(token){
+        //     config.headers.Authorization = `Token ${token}`
+        // }
+        // else{
+        //     config.headers.Authorization = ``
+        // }
         return config;
     }
 )

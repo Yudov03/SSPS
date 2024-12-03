@@ -1,49 +1,15 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import AxiosInstance from "../Axios";
 
 export default function PrinterTable() {
-  // Dữ liệu máy in
-  const printerData = [
-    {
-      name: "DeskJet 2734e",
-      status: "Đã kích hoạt",
-      condition: "Đang chạy",
-      ip: "10.0.1.202",
-      location: "B4.402",
-      lastUsed: "18/10/2024 6:15 CH",
-      statusClass: "active",
-    },
-    {
-      name: "MAXIFY GX5070",
-      status: "Đã kích hoạt",
-      condition: "Sẵn sàng",
-      ip: "10.0.0.163",
-      location: "A4.302",
-      lastUsed: "18/10/2024 11:52 SA",
-      statusClass: "active",
-    },
-    {
-      name: "Sawgrass SG500",
-      status: "Chưa kích hoạt",
-      condition: "Bảo trì",
-      ip: "10.0.1.132",
-      location: "C6.104",
-      lastUsed: "16/10/2024 8:01 CH",
-      statusClass: "inactive",
-    },
-    {
-      name: "Smart Tank 5101",
-      status: "Chưa kích hoạt",
-      condition: "Không sử dụng",
-      ip: "10.0.1.837",
-      location: "A5.101",
-      lastUsed: "05/10/2024 11:32 SA",
-      statusClass: "inactive",
-    },
-  ];
-
+  
   // State cho danh sách hiển thị, giá trị tìm kiếm và trạng thái lọc
-  const [printers, setPrinters] = useState(printerData);
+  const [printers, setPrinters] = useState([]);
+    useEffect(() => {
+        AxiosInstance.get(`printers/`)
+            .then(res => setPrinters(res.data))
+            .catch(err => console.log(err));
+    }, [])
   const [searchTerm, setSearchTerm] = useState("");
   const [filterStatus, setFilterStatus] = useState("all"); // Lọc theo trạng thái
 
