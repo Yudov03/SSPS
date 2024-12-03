@@ -1,121 +1,177 @@
-body {
-  margin: 0;
-}
-.printer-table-container {
-  font-family: Arial, sans-serif;
-  margin: 20px;
+/* Container chính */
+.printer-management {
+  margin: 20px auto;
   padding: 20px;
-  background: #f9f9f9;
-  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
-.title {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.table-wrapper {
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.table-header {
+/* Header: Tìm kiếm và chọn chế độ */
+.header-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
-.search-input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 200px;
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
 }
 
-.filter-button,
-.add-printer-button {
+.search-bar input {
+  width: 100%;
   padding: 8px 12px;
-  background: #007bff;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+}
+
+.search-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+.mode-select {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f8f9fa;
   cursor: pointer;
 }
 
 .add-printer-button {
-  background: #28a745;
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-printer-button:hover {
+  background-color: #218838;
+}
+
+/* Bảng */
+.table-container {
+  overflow-x: auto;
 }
 
 .printer-table {
   width: 100%;
   border-collapse: collapse;
-}
-
-.printer-table th,
-.printer-table td {
-  padding: 12px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  font-size: 14px;
 }
 
 .printer-table th {
-  background: #f1f1f1;
+  background-color: #f2f2f2;
+  padding: 10px;
+  font-weight: bold;
+  border-bottom: 2px solid #ddd;
+  font-size: 13px;
 }
 
-.printer-table tr:hover {
-  background: #f9f9f9;
+.printer-table td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  font-size: 12px;
 }
 
 .active {
-  color: #28a745;
+  color: green;
   font-weight: bold;
 }
 
 .inactive {
-  color: #dc3545;
+  color: red;
   font-weight: bold;
 }
 
+/* Nút thao tác */
 .action-button {
-  padding: 4px 8px;
+  font-size: 12px;
+  padding: 6px 12px;
+  margin: 0 4px;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  margin-right: 4px;
-}
-
-.action-button.add {
-  background: #007bff;
-  color: #fff;
 }
 
 .action-button.delete {
-  background: #dc3545;
+  background-color: #dc3545;
   color: #fff;
 }
 
-.pagination {
-  margin-top: 20px;
-  text-align: right;
+.action-button:hover {
+  opacity: 0.8;
 }
 
-.pagination button {
-  padding: 6px 12px;
-  margin-left: 4px;
-  border: none;
-  background: #007bff;
-  color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
+/* Responsive */
+@media (max-width: 768px) {
+  .header-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+
+  .search-bar input {
+    font-size: 12px;
+  }
+
+  .printer-table th,
+  .printer-table td {
+    font-size: 12px;
+  }
+
+  .add-printer-button,
+  .search-button,
+  .mode-select {
+    font-size: 12px;
+  }
+
+  .action-button {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
 }
 
-.pagination button.active-page {
-  background: #28a745;
+@media (max-width: 480px) {
+  .printer-management {
+    padding: 10px;
+  }
+
+  .add-printer-button,
+  .search-button,
+  .mode-select {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .table-container {
+    overflow-x: scroll;
+  }
 }
-
-
-
