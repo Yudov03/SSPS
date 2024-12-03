@@ -57,7 +57,7 @@
   cursor: pointer;
 }
 
-.add-printer-button {
+.view-printers-button {
   padding: 8px 16px;
   font-size: 14px;
   background-color: #28a745;
@@ -68,7 +68,7 @@
   transition: background-color 0.3s;
 }
 
-.add-printer-button:hover {
+.view-printers-button:hover {
   background-color: #218838;
 }
 
@@ -118,6 +118,11 @@
   cursor: pointer;
 }
 
+.action-button.view {
+  background-color: #17a2b8;
+  color: #fff;
+}
+
 .action-button.delete {
   background-color: #dc3545;
   color: #fff;
@@ -125,6 +130,20 @@
 
 .action-button:hover {
   opacity: 0.8;
+}
+.action-button.edit {
+  background-color: #ffc107; /* Màu vàng */
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 0 5px;
+}
+
+.action-button.edit:hover {
+  background-color: #e0a800; /* Màu vàng đậm hơn khi hover */
 }
 
 /* Responsive */
@@ -147,7 +166,7 @@
     font-size: 12px;
   }
 
-  .add-printer-button,
+  .view-printers-button,
   .search-button,
   .mode-select {
     font-size: 12px;
@@ -164,7 +183,7 @@
     padding: 10px;
   }
 
-  .add-printer-button,
+  .view-printers-button,
   .search-button,
   .mode-select {
     width: 100%;
@@ -174,4 +193,10 @@
   .table-container {
     overflow-x: scroll;
   }
+}
+.no-data {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: #888;
 }
