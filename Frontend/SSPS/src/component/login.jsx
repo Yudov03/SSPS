@@ -1,88 +1,43 @@
-
-import { React, useState } from 'react'
-import { Box } from '@mui/material'
-import MyTextField from '../forms/MyTextField'
-import MyPassField from '../forms/MyPassField'
-import MyButton from '../forms/MyButton'
-import { Link } from 'react-router-dom'
-import { useForm } from 'react-hook-form'
-import AxiosInstance from '../AxiosInstance'
-import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
+import React, { useState } from "react";
 
 const Login = () => {
-    const navigate = useNavigate()
-    const { handleSubmit, control } = useForm({
-      defaultValues: { email: '', password: '', }
-    })
-    const [loading, setLoading] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-    const submission = (data) => {
-        setLoading(true);
-        const loadingToastId = toast.loading('Logging in...');
-        AxiosInstance.post(`login/`, {
-            email: data.email,
-            password: data.password,
-        })
-            .then((response) => {
-                console.log(response)
-                localStorage.setItem('Token', response.data.token)
-                navigate(`/home`)
-                toast.success('Login successful!');
-            })
-            .catch((error) => {
-                console.error('Error during login', error)
-                toast.error('Error during login');
-            }).finally(() => {
-                // Ẩn toast "Loading..." khi nhận được response hoặc khi gặp lỗi
-                toast.dismiss(loadingToastId);
-                setLoading(false);
-            });
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Xử lý đăng nhập ở đây
+    console.log("Đăng nhập với", username, password);
+  };
 
-    return (
-        <div className={"myBackground "}>
-            <form onSubmit={handleSubmit(submission)}>
-                <Box className={"whiteBox"}>
+  return (
+    <div className="login-container">
+      <div className="login-box">
+        <h2>Đăng Nhập</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label>Tên người dùng</label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Nhập tên người dùng"
+            />
+          </div>
+          <div className="input-group">
+            <label>Mật khẩu</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Nhập mật khẩu"
+            />
+          </div>
+          <button type="submit" className="login-btn">Đăng nhập</button>
+        </form>
+      </div>
+    </div>
+  );
+};
 
-                    <Box className={"itemBox"}>
-                        <Box className={"title"}> LOGIN PAGE</Box>
-                    </Box>
-
-                    <Box className={"itemBox"}>
-                        <MyTextField
-                            label={"Email"}
-                            name={"email"}
-                            control={control}
-                        />
-                    </Box>
-
-                    <Box className={"itemBox"}>
-                        <MyPassField
-                            label={"Password"}
-                            name={"password"}
-                            control={control}
-                        />
-                    </Box>
-
-                    <Box className={"itemBox"}>
-                        <MyButton
-                            label={"Login"}
-                            type={"submit"}
-                            disabled={loading} // Disable button khi đang loading
-                        />
-                    </Box>
-
-                    <Box className={"itemBox"} sx={{ flexDirection: 'column' }}>
-                        {/* <Link to="/register"> No account yet? Please register! </Link> */}
-                        <Link className='text-decoration-none' to="/request/password_reset"> Forgot your password? Click here! </Link>
-                    </Box>
-
-                </Box>
-            </form>
-        </div>
-    )
-
-}
-
-export default Login
+export default Login;
