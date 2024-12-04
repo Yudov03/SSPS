@@ -1,5 +1,7 @@
 /* Container chính */
-  
+body {
+  margin : 0 ; 
+}
 .printer-management {
   margin: 20px auto;
   padding: 20px;
