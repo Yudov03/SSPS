@@ -1,59 +1,36 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import React from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import SideNavigation from "./component/SideNav/nav";
 import Printer from "./component/Printer/printer";
 import AddPrinter from "./component/Printer/add";
 import EditPrinter from "./component/Printer/edit"; // Import thêm trang chỉnh sửa
-import AxiosInstance from "./component/Axios";
-
+import DetailPrinter from "./component/Printer/detail";
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/js/bootstrap.bundle.js'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 function App() {
-  // State để quản lý danh sách máy in
-  const [printers, setPrinters] = useState([]);
-
-  // Lấy danh sách máy in từ API
-  const fetchPrinters = async () => {
-    try {
-      const response = await AxiosInstance.get("/printers");
-      setPrinters(response.data);
-    } catch (error) {
-      console.error("Lỗi khi lấy dữ liệu máy in:", error);
-    }
-  };
-
-  // Thêm máy in mới vào API
-  const addPrinter = async (newPrinter) => {
-    try {
-      const response = await AxiosInstance.post("/printers", newPrinter);
-      setPrinters((prevPrinters) => [...prevPrinters, response.data]);
-    } catch (error) {
-      console.error("Lỗi khi thêm máy in mới:", error);
-    }
-  };
-
-  // Tải danh sách máy in khi component mount
-  useEffect(() => {
-    fetchPrinters();
-  }, []);
-
+  const location = useLocation()
+  const noNavbar = location.pathname === "/"
   return (
+    <>
+    {noNavbar ?
+      <Routes>
+        <Route path="/" element={<Login />} />
+      </Routes>
+    :
     <SideNavigation
       content={
         <Routes>
-          {/* Route hiện tại */}
-          <Route
-            path="/printer"
-            element={<Printer printers={printers} setPrinters={setPrinters} />}
-          />
-          <Route
-            path="/printer/add"
-            element={<AddPrinter addPrinter={addPrinter} />}
-          />
-
-          {/* Route mới cho trang chỉnh sửa */}
-          <Route path="/printer/edit/:id" element={<EditPrinter />} />
+          <Route path="/printers" element={<Printer />} />
+          <Route path="/printers/add" element={<AddPrinter />} />
+          <Route path="/printers/edit/:id" element={<EditPrinter />} />
+          <Route path="/printers/info/:id" element={<DetailPrinter />} />
         </Routes>
       }
     />
+    }
+    </>
   );
 }
 

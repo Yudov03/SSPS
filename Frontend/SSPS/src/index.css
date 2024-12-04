@@ -3,11 +3,7 @@ body {
   margin : 0 ; 
 }
 .printer-management {
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  padding: 16px 24px 24px 24px;
 }
 
 /* Header: Tìm kiếm và chọn chế độ */
@@ -451,7 +447,7 @@ h2 {
 
 
 /*  cái nút thêm máy in  */
-.btn.btn-primary {
+.addbtn{
   display: inline-block;
   padding: 10px 16px;
   font-size: 14px;
@@ -466,13 +462,13 @@ h2 {
   box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
 }
 
-.btn.btn-primary:hover {
+.addbtn:hover {
   background-color: #0056b3; /* Màu xanh đậm hơn khi hover */
   transform: translateY(-2px); /* Hiệu ứng nổi lên khi hover */
   box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
 }
 
-.btn.btn-primary:active {
+.addbtn:active {
   background-color: #004085; /* Màu xanh đậm nhất khi nhấn */
   transform: translateY(0); /* Quay về vị trí ban đầu khi nhấn */
   box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
