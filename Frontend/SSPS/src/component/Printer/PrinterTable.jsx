@@ -305,7 +305,7 @@ export default function PrinterTable() {
       status: newStatus, 
       lastUsed: d.lastUsed, 
       id: d.id, 
-      condition: d.condition 
+      condition: d.condition
     };
     AxiosInstance.put(`printers/${d.id}/`, updatedValue) 
       .then(res => { 
