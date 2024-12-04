@@ -480,12 +480,10 @@ h2 {
 .edit-printer-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start ;
-  height: 60vh;
+  align-items: flex-start;
+  height: 100vh;
   background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-  padding-top: 150px;
-  border-radius: 15px;
-  position : relative ; 
+  padding-top: 50px;
 }
 
 /* Box chính bọc nội dung */
@@ -493,12 +491,10 @@ h2 {
   width: 900px; /* Thu nhỏ box lại */
   background: #fff;
   border-radius: 12px;
-  top : 120px ; 
   padding: 20px 30px 20px 20px;
-  position: absolute;
+  position: relative;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
   border: 2px solid #dce7f3;
-  /* padding-bottom: 20px; */
 }
 
 /* Nút Hủy */
@@ -632,9 +628,9 @@ textarea {
 }
 
 /* Hover trên toàn bộ input */
-input:hover,
-textarea:hover,
-select:hover {
+myinput:hover,
+mytextarea:hover,
+myselect:hover {
   background: #f1f5f9;
 }
 

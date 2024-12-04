@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Link } from "react-router-dom";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -33,7 +33,8 @@ const Login = () => {
               placeholder="Nhập mật khẩu"
             />
           </div>
-          <button type="submit" className="login-btn">Đăng nhập</button>
+          {/* <button type="submit" href="dashboard/" className="login-btn">Đăng nhập</button> */}
+          <Link to={`dashboard`} className='btn btn-primary'>Đăng nhập</Link>
         </form>
       </div>
     </div>

@@ -278,15 +278,55 @@ export default function PrinterTable() {
   //-----------------------------------------------------------
 
   //MODE-------------------------------------------------------
+  const [mode, setMode] = useState('N');
   const handleMode = (event) => { 
+    setMode(event.target.value)
     setSearchValue('');
     if (event.target.value !== "N") {
       const filtered = data.filter(item => item.status === event.target.value);
       setFilteredData(filtered);
     } else {
       setFilteredData(data);
+      window.location.reload();
     }
     setCurrentPage(1);
+  }
+  //-----------------------------------------------------------
+
+  //CHANGE MODE------------------------------------------------
+  const [currentItem, setCurrentItem] = useState(null);
+  const handleChange = (d) => {
+    const newStatus = d.status === "E" ? "D" : "E"; 
+    const updatedValue = { 
+      name: d.name, 
+      ip: d.ip, 
+      location: d.location, 
+      description: d.description, 
+      status: newStatus, 
+      lastUsed: d.lastUsed, 
+      id: d.id, 
+      condition: d.condition 
+    };
+    AxiosInstance.put(`printers/${d.id}/`, updatedValue) 
+      .then(res => { 
+        // console.log(res); 
+        if (res.status === 200) { 
+          toast.success('Updated Success'); 
+        } else if (res.status === 400) { 
+          toast.error('Please fill full'); 
+        } else { 
+          toast.error('An error occurred'); 
+        } 
+      })
+      .catch(error => {
+        console.error(error);
+        toast.error(`${error}, Please try again!`);
+      });
+    
+    
+    setSearchData(searchData.map(data => data.id === d.id ? updatedValue : data));
+    setFilteredData(filteredData.map(data => data.id === d.id ? updatedValue : data)); 
+    setFilteredData(prevFilteredData => prevFilteredData.filter(data => data.id !== d.id));
   }
   //-----------------------------------------------------------
 
@@ -317,19 +357,54 @@ export default function PrinterTable() {
             </tr>
           </thead>
           <tbody>
-            {currentData.map((d, i) => (
-              <tr key={i}>
+            {currentData.map(d => (
+              <tr key={d.id}>
                 <td style={{ textTransform: 'uppercase' }} >{d.name}</td>
                 <td>{d.status==="D"? <div style={{ color: "red"}}> Chưa kích hoạt</div>: <div style={{color: "blue"}}>Đã kích hoạt</div>}</td>
-                <td>{d.condition}</td>
+                <td>{d.condition==="R"?"Sẵn sàng":d.condition==="B"?"Đang chạy":d.condition==="M"?"Bảo trì":"Không sử dụng"}</td>
                 <td>{d.ip}</td>
                 <td>{d.location}</td>
                 <td>{d.lastUsed}</td>
-                <td>
-                  <Link to={`info/${d.id}`} className='btn btn-sm btn-info me-2'><i className="bi bi-info-square"></i></Link>
-                  <Link to={`edit/${d.id}`} className="btn btn-sm btn-primary me-2"><i className="bi bi-pencil-square"></i></Link>
-                  <button onClick={() => handleDelete(d.id)} className="btn btn-sm btn-danger"><i className="bi bi-trash3"></i></button>
-                </td>
+                {mode==="N"? 
+                  <td>
+                    <Link to={`info/${d.id}`} className='btn btn-sm btn-info me-2'><i className="bi bi-info-square"></i></Link>
+                    <Link to={`edit/${d.id}`} className="btn btn-sm btn-primary me-2"><i className="bi bi-pencil-square"></i></Link>
+                    <button onClick={() => handleDelete(d.id)} className="btn btn-sm btn-danger"><i className="bi bi-trash3"></i></button>
+                  </td>
+                :
+                  <td>
+                    <div className="form-check form-switch">
+                      <input 
+                        className="form-check-input" 
+                        type="checkbox" 
+                        role="switch" 
+                        id={d.name} 
+                        checked={d.status === "E"} 
+                        onClick={() => setCurrentItem(d)}
+                        data-bs-toggle="modal" 
+                        data-bs-target="#staticBackdrop"
+                        readOnly
+                      />
+                    </div>
+                    <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <h1 className="modal-title fs-5" id="staticBackdropLabel">Xác nhận</h1>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div className="modal-body">
+                            Bạn có chắc chắn muốn thực hiện thao tác này không?
+                          </div>
+                          <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={() => handleChange(currentItem)}>Xác nhận</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                }
               </tr>
             ))}
           </tbody>
