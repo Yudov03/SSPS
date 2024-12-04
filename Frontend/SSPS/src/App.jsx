@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import SideNavigation from "./component/SideNav/nav";
 import Printer from "./component/Printer/printer";
 import AddPrinter from "./component/Printer/add";
+import EditPrinter from "./component/Printer/edit"; // Import thêm trang chỉnh sửa
 import AxiosInstance from "./component/Axios";
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
     <SideNavigation
       content={
         <Routes>
+          {/* Route hiện tại */}
           <Route
             path="/printer"
             element={<Printer printers={printers} setPrinters={setPrinters} />}
@@ -46,6 +48,9 @@ function App() {
             path="/printer/add"
             element={<AddPrinter addPrinter={addPrinter} />}
           />
+
+          {/* Route mới cho trang chỉnh sửa */}
+          <Route path="/printer/edit/:id" element={<EditPrinter />} />
         </Routes>
       }
     />

@@ -1,13 +1,15 @@
 {
   "printers": [
     {
-      "name": "DeskJet 2734e",
-      "status": "Đã kích hoạt",
-      "condition": "Đang chạy",
-      "ip": "10.0.1.202",
-      "location": "B4.402",
-      "lastUsed": "18/10/2024 6:15 CH",
-      "statusClass": "active"
+      "name": "DeskJet 2734e12",
+      "ip": "191004",
+      "location": "nhà xác",
+      "description": "thử tính năng chỉnh sửa",
+      "condition": "Sẵn sàng",
+      "status": "Chưa kích hoạt",
+      "statusClass": "inactive",
+      "lastUsed": "undefined",
+      "id": "b570"
     },
     {
       "name": "MAXIFY GX5070",
@@ -16,7 +18,8 @@
       "ip": "10.0.0.163",
       "location": "A4.302",
       "lastUsed": "18/10/2024 11:52 SA",
-      "statusClass": "active"
+      "statusClass": "active",
+      "id": "c74d"
     },
     {
       "name": "Sawgrass SG500",
@@ -25,7 +28,8 @@
       "ip": "10.0.1.132",
       "location": "C6.104",
       "lastUsed": "16/10/2024 8:01 CH",
-      "statusClass": "inactive"
+      "statusClass": "inactive",
+      "id": "aaf3"
     },
     {
       "name": "Smart Tank 5101",
@@ -34,7 +38,8 @@
       "ip": "10.0.1.837",
       "location": "A5.101",
       "lastUsed": "05/10/2024 11:32 SA",
-      "statusClass": "inactive"
+      "statusClass": "inactive",
+      "id": "3e70"
     },
     {
       "id": "45ef",

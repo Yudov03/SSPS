@@ -476,4 +476,178 @@ h2 {
   box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
 }
 
+/* css cho trang edit */
+/* Toàn bộ container chính */
 
+.edit-printer-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  padding-top: 50px;
+}
+
+/* Box chính bọc nội dung */
+.edit-printer-box {
+  width: 900px; /* Thu nhỏ box lại */
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 30px 20px 20px;
+  position: relative;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+  border: 2px solid #dce7f3;
+}
+
+/* Nút Hủy */
+.cancel-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff4d4f;
+  border: none;
+  color: #fff;
+  padding: 8px 12px; /* Thu nhỏ nút hủy */
+  border-radius: 6px;
+  font-size: 13px; /* Kích thước chữ nhỏ hơn */
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cancel-button:hover {
+  background: #d9363e;
+}
+
+/* Nội dung chính */
+.edit-printer-content {
+  display: flex;
+  gap: 20px; /* Thu nhỏ khoảng cách giữa hai phần */
+}
+
+/* Nửa bên trái */
+.edit-printer-left {
+  flex: 1;
+  width : 60% ; 
+}
+
+.image-upload {
+  margin-top: 100px ;
+  margin-bottom: 20px; /* Giảm khoảng cách giữa ảnh và dropdown */
+}
+
+.image-upload img {
+  width: 100%;
+  max-height: 200px;
+  font-weight: bold ;
+  font-size: 20px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 10px;
+ 
+  border: 2px solid #dce7f3;
+}
+
+.status-dropdown select {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #dce7f3;
+  border-radius: 6px;
+  background: #f9f9f9;
+  transition: border-color 0.3s;
+}
+
+.status-dropdown select:focus {
+  border-color: #40a9ff;
+  outline: none;
+}
+
+/* Nửa bên phải */
+.edit-printer-right {
+  flex: 1;
+  width : 40% ; 
+  padding-right: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px; /* Giảm khoảng cách giữa các trường */
+   
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #555;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px; /* Thu nhỏ padding */
+  border: 1px solid #dce7f3;
+  border-radius: 6px;
+  background: #f9f9f9;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #40a9ff;
+  outline: none;
+}
+
+/* Textarea chỉnh kích thước */
+textarea {
+  resize: none;
+  height: 100px; /* Thu nhỏ chiều cao */
+}
+
+/* Nút Lưu */
+.save-button {
+  width: 30%; /* Thu nhỏ nút lưu */
+  padding: 8px 12px; /* Kích thước nhỏ gọn */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px; /* Chữ nhỏ hơn */
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 auto; /* Căn giữa */
+  display: block;
+}
+
+.save-button:hover {
+  background-color: #0056b3;
+}
+
+/* Hover mượt hơn */
+.save-button:active,
+.cancel-button:active {
+  transform: scale(0.98);
+}
+
+/* Hover trên toàn bộ input */
+input:hover,
+textarea:hover,
+select:hover {
+  background: #f1f5f9;
+}
+
+/* Đáp ứng cho màn hình nhỏ */
+@media (max-width: 768px) {
+  .edit-printer-content {
+    flex-direction: column;
+  }
+
+  .edit-printer-box {
+    width: 95%;
+  }
+
+  .cancel-button {
+    top: 15px;
+    right: 15px;
+  }
+}
