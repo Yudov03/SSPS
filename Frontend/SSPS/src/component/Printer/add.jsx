@@ -1,7 +1,20 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function AddPrinter({ addPrinter }) {
+export default function AddPrinter() {
+
+  // // State để quản lý danh sách máy in
+  // const [printers, setPrinters] = useState([]);
+
+  // // Thêm máy in mới vào API
+  // const addPrinter = async (newPrinter) => {
+  //   try {
+  //     const response = await AxiosInstance.post("/printers", newPrinter);
+  //     setPrinters((prevPrinters) => [...prevPrinters, response.data]);
+  //   } catch (error) {
+  //     console.error("Lỗi khi thêm máy in mới:", error);
+  //   }
+  // };
   const [printerName, setPrinterName] = useState("");
   const [printerIP, setPrinterIP] = useState("");
   const [printerLocation, setPrinterLocation] = useState("");
@@ -34,7 +47,7 @@ export default function AddPrinter({ addPrinter }) {
       statusClass: statusClass, // Class trạng thái
     };
     addPrinter(newPrinter); // Thêm máy in mới với trạng thái đã thay đổi
-    navigate("/printer");
+    navigate("/printers");
   };
 
   return (
@@ -94,7 +107,7 @@ export default function AddPrinter({ addPrinter }) {
       </div>
 
       <div className="button-group">
-        <Link to="/printer">
+        <Link to="/printers">
           <button className="button cancel">Hủy</button>
         </Link>
         <button className="button save" onClick={handleSavePrinter}>

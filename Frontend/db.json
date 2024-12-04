@@ -6,124 +6,108 @@
       "location": "nhà xác",
       "description": "thử tính năng chỉnh sửa",
       "condition": "Sẵn sàng",
-      "status": "Chưa kích hoạt",
-      "statusClass": "inactive",
-      "lastUsed": "undefined",
+      "status": "D",
+      "lastUsed": "18/10/2024 11:52 SA",
       "id": "b570"
     },
     {
-      "name": "đời anh tệ lắm em ",
-      "ip": "10.0.0.163",
-      "location": "ở tù",
-      "description": "",
+      "name": "MAXIFY GX5070",
+      "status": "E",
       "condition": "Sẵn sàng",
-      "status": "Đã kích hoạt",
-      "statusClass": "active",
+      "ip": "10.0.0.163",
+      "location": "A4.302",
       "lastUsed": "18/10/2024 11:52 SA",
       "id": "c74d"
     },
     {
-      "name": "hồn ma biết code ",
-      "ip": "10.0.1.132",
-      "location": "nghĩa địa ",
-      "description": "",
+      "name": "Sawgrass SG500",
+      "status": "D",
       "condition": "Bảo trì",
-      "status": "Chưa kích hoạt",
-      "statusClass": "inactive",
+      "ip": "10.0.1.132",
+      "location": "C6.104",
       "lastUsed": "16/10/2024 8:01 CH",
       "id": "aaf3"
     },
     {
-      "name": "mày nhìn cái choá gì ? ",
-      "ip": "10.0.1.837",
-      "location": "hẻm bùi thị xuân",
-      "description": "",
+      "name": "Smart Tank 5101",
+      "status": "D",
       "condition": "Không sử dụng",
-      "status": "Chưa kích hoạt",
-      "statusClass": "inactive",
+      "ip": "10.0.1.837",
+      "location": "A5.101",
       "lastUsed": "05/10/2024 11:32 SA",
       "id": "3e70"
     },
     {
-      "name": "kẻ bạc đời ",
-      "ip": "19000000",
-      "location": "gầm cầu",
-      "description": "",
+      "id": "45ef",
+      "name": "abc",
+      "status": "D",
       "condition": "Sẵn sàng",
-      "status": "Đã kích hoạt",
-      "statusClass": "active",
-      "lastUsed": "03/12/2024, 16:44:26",
-      "id": "45ef"
+      "ip": "123",
+      "location": "f5",
+      "lastUsed": "03/12/2024, 16:44:26"
     },
     {
       "id": "934c",
       "name": "duy hieu",
-      "status": "Đã kích hoạt",
+      "status": "E",
       "condition": "Sẵn sàng",
       "ip": "1910",
       "location": "a10",
-      "lastUsed": "03/12/2024, 17:23:29",
-      "statusClass": "active"
+      "lastUsed": "03/12/2024, 17:23:29"
     },
     {
       "id": "12a5",
       "name": "duyvo",
-      "status": "Chưa kích hoạt",
+      "status": "D",
       "condition": "Sẵn sàng",
       "ip": "1111",
       "location": "d5",
-      "lastUsed": "03/12/2024, 17:37:14",
-      "statusClass": "inactive"
+      "lastUsed": "03/12/2024, 17:37:14"
     },
     {
       "id": "bd7b",
       "name": "hieuvo",
-      "status": "Đã kích hoạt",
+      "status": "E",
       "condition": "Sẵn sàng",
       "ip": "123",
       "location": "f8",
-      "lastUsed": "03/12/2024, 17:37:42",
-      "statusClass": "active"
+      "lastUsed": "03/12/2024, 17:37:42"
     },
     {
       "id": "4fe3",
       "name": "ádf",
-      "status": "Đã kích hoạt",
+      "status": "E",
       "condition": "Sẵn sàng",
       "ip": "666",
       "location": "234",
-      "lastUsed": "03/12/2024, 18:01:24",
-      "statusClass": "active"
+      "lastUsed": "03/12/2024, 18:01:24"
     },
     {
       "id": "d085",
       "name": "hdsa",
-      "status": "Đã kích hoạt",
+      "status": "E",
       "condition": "Sẵn sàng",
       "ip": "456",
       "location": "df",
-      "lastUsed": "03/12/2024, 18:02:02",
-      "statusClass": "active"
+      "lastUsed": "03/12/2024, 18:02:02"
     },
     {
       "id": "9230",
       "name": "jkl",
-      "status": "Đã kích hoạt",
+      "status": "E",
       "condition": "Sẵn sàng",
       "ip": "2234",
       "location": "t6",
-      "lastUsed": "03/12/2024, 18:18:40",
-      "statusClass": "active"
+      "lastUsed": "03/12/2024, 18:18:40"
     },
     {
       "id": "fc4c",
       "name": "hieu.voduy",
-      "status": "Chưa kích hoạt",
+      "status": "D",
       "condition": "Sẵn sàng",
       "ip": "1910",
       "location": "hcmut",
-      "lastUsed": "03/12/2024, 18:27:03",
-      "statusClass": "inactive"
+      "lastUsed": "03/12/2024, 18:27:03"
     }
   ]
 }
