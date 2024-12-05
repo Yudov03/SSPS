@@ -452,7 +452,7 @@ export default function AddPrinter() {
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose2}>Tiếp tục</Button>
-                <Link to={`/printers/info/${id}`} className="btn btn-primary"  onClick={handleClose2}>Đi đến thông tin chi tiết</Link>
+                <Link to={`/printers/info/${id}`} className="btn btn-primary"  onClick={handleClose2} state={{ from: `/edit/${id}` }}>Đi đến thông tin chi tiết</Link>
               </Modal.Footer>
             </Modal>
           </div>

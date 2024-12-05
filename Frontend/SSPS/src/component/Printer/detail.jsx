@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams,  useLocation} from "react-router-dom";
 import AxiosInstance from "../Axios";
 import { toast } from "react-toastify";
 import styled from "styled-components";
@@ -25,8 +25,13 @@ export default function AddPrinter() {
     }, [])
 
     const navigate = useNavigate();
+    const location = useLocation();
     const handleBackButton = () => {
-        navigate(-1);
+        if (location.state?.from === `/edit/${id}`) { 
+            navigate('/printers'); 
+        } else { 
+            navigate(-1); // Go back to the previous page if it's not /edit 
+        }
     }
   
     return (
