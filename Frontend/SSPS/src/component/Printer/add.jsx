@@ -134,23 +134,30 @@ import { Link } from "react-router-dom";
 
 export default function AddPrinter() {
 
+  const currentDateTime = new Date(); 
+  const hours = currentDateTime.getHours(); 
+  const period = hours < 12 ? "SA" : "CH"; // Xác định SA hoặc CH 
+  const formattedHours = hours % 12 === 0 ? 12 : hours % 12; // Chuyển đổi 24h thành 12h 
+  const formattedDate = `${String(currentDateTime.getDate()).padStart(2, '0')}/${String(currentDateTime.getMonth() + 1).padStart(2, '0')}/${currentDateTime.getFullYear()} ${String(formattedHours).padStart(2, '0')}:${String(currentDateTime.getMinutes()).padStart(2, '0')} ${period}`;
   const [values, setValues] = useState({
       name: '',
       ip: '',
       location: '',
       status: "D",
-      lastUsed: '',
+      lastUsed: formattedDate,
       condition: '',
       description: ''
   })
 
+  const [flag,setFlag] = useState(false);
   const handleSubmit = async (event) => {
       event.preventDefault();
       try {
           const res = await AxiosInstance.post(`printers/`, values);
           console.log(res);
           if (res.status === 201) {
-              toast.success('Added Success');
+              setFlag(true);
+              //toast.success('Đã thêm máy in thành công!');
               setValues({
                 name: '',
                 ip: '',
@@ -160,16 +167,17 @@ export default function AddPrinter() {
                 condition: '',
                 description: ''
               });
+              //const successModal = new window.bootstrap.Modal(document.getElementById('staticBackdrop')); 
+              //successModal.hide();
           } else if (res.status === 400) {
-              toast.error('Please fill full');
+              toast.error('Hãy điền đủ các trường!');
           } else {
-              toast.error('An error occurred');
+              toast.error('Lỗi!');
           }
       } catch (error) {
           console.error(error);
-          toast.error(`${error}, Please try again!`);
+          toast.error(`${error}, Lỗi!`);
       }
-
   }
 
   const navigate = useNavigate();
@@ -177,6 +185,9 @@ export default function AddPrinter() {
       navigate(-1);
   }
   
+  const handleSub = () => {
+
+  }
   return (
     <StyledPrinterList>
       <StyledHeader>
@@ -189,7 +200,7 @@ export default function AddPrinter() {
       </StyledHeader>
       <hr />
       <div className="mx-5" style={{}}>
-        <form onSubmit={handleSubmit}>
+        <div>
           <div className="row">
             <div className="col-5">
               <div className="input-file-wrapper">
@@ -199,7 +210,7 @@ export default function AddPrinter() {
               <div className="">
                 <label style={{ fontWeight: 'bold' }} htmlFor="statusid"></label>
                 <div className="form-check form-switch ms-2">
-                    < input className="form-check-input" type="checkbox" role="switch" id="statusid" checked={values.status==="E"} onClick={e => setValues({ ...values, status: values.status==="E"?"D":"E" })} readOnly />
+                    < input className="form-check-input" type="checkbox" role="switch" id="statusid" checked={values.status==="E"} onClick={e => setValues({ ...values, status: values.status==="E"?"D":"E", condition: values.status==="E"?"U":"R" })} readOnly />
                 </div>
               </div>
             </div>
@@ -225,9 +236,77 @@ export default function AddPrinter() {
             </div>
           </div>
           <div className="d-grid gap-2 col-3 mx-auto pt-5 pb-5">
-            <button className=" btn btn-success">Lưu</button>
+            <button 
+              data-bs-toggle="modal" 
+              data-bs-target="#staticBackdrop"
+              className=" btn btn-success"
+              //onClick={() => setDeleteItem(d.id)} 
+            >Lưu</button>
+            <div 
+              className="modal fade" 
+              id="staticBackdrop" 
+              data-bs-backdrop="static" 
+              data-bs-keyboard="false" 
+              tabIndex="-1" 
+              aria-labelledby="staticBackdropLabel" 
+              aria-hidden="true"
+            >
+              <div className="modal-dialog modal-dialog-centered">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h1 className="modal-title fs-5" id="staticBackdropLabel">Xác nhận</h1>
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div className="modal-body">
+                    Bạn có chắc chắn muốn thêm máy in này không?
+                  </div>
+                  <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button 
+                      type="button" 
+                      className="btn btn-primary" 
+                      data-bs-dismiss="modal" 
+                      onClick={handleSubmit} 
+                      data-bs-toggle="modal" 
+                      href="#staticBackdrop1"
+                    >Xác nhận</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {flag && (
+            <div 
+              style={{ display: 'block' }} 
+              className="modal show" 
+              id="staticBackdrop1" 
+              data-bs-backdrop="static" 
+              data-bs-keyboard="false" 
+              tabIndex="-1" 
+              aria-labelledby="staticBackdropLabel1" 
+              aria-hidden="true"
+            >
+              <div className="modal-dialog modal-dialog-centered">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h1 
+                      className="modal-title fs-5" 
+                      id="staticBackdropLabel1"
+                    >Đã thêm thành công!</h1>
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div className="modal-body">
+                    Bạn muốn tiếp tục thêm máy in hay xem thông tin chi tiết của máy vừa được thêm?
+                  </div>
+                  <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={()=>setFlag(false)}>Tiếp tục</button>
+                    <Link to={`info/${values.id}`} className="btn btn-primary" data-bs-dismiss="modal" onClick={()=>setFlag(false)}>Đi đến thông tin chi tiết</Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+            )}
           </div>
-        </form>
+        </div>
       </div>
     </StyledPrinterList>
   );

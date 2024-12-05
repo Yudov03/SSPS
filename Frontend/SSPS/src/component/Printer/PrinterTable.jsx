@@ -167,12 +167,13 @@ export default function PrinterTable() {
   //-----------------------------------------------------------
 
   //DELETE-----------------------------------------------------
+  const [deleteItem, setDeleteItem] = useState();
   const handleDelete = async (id) => {
-      const confirm = window.confirm("Would you like to Delete?");
+      //const confirm = window.confirm("Would you like to Delete?");
       if (confirm) {
           try {
               await AxiosInstance.delete(`printers/${id}`);
-              toast.success('Deleted Success!');
+              toast.success('Đã xóa thành công!');
               setData(prevData => prevData.filter(data => data.id !== id));
               setFilteredData(prevFilteredData => prevFilteredData.filter(data => data.id !== id));
               setSearchData(prevSearchData => prevSearchData.filter(item => item.id !== id));
@@ -184,7 +185,7 @@ export default function PrinterTable() {
               }
           } catch (error) {
               console.log(error);
-              toast.error('An error occurred!');
+              toast.error('Lỗi!');
           }
       }
   }
@@ -192,7 +193,13 @@ export default function PrinterTable() {
 
   //SEARCHING--------------------------------------------------
   const [filteredData, setFilteredData] = useState([]);
-  useEffect(() => { setFilteredData(data); }, [data]);
+  useEffect(() => { 
+    if (filteredData.length===0) {
+      setFilteredData(data); 
+      //console.log(filteredData);
+      //isInitialMount.current = false;
+    }
+  }, [data]);
   const [searchValue, setSearchValue] = useState('');
   const [searchData, setSearchData] = useState([]);
   const handleSearchChange = (searchValue) => {
@@ -287,7 +294,7 @@ export default function PrinterTable() {
       setFilteredData(filtered);
     } else {
       setFilteredData(data);
-      window.location.reload();
+      //window.location.reload();
     }
     setCurrentPage(1);
   }
@@ -311,22 +318,23 @@ export default function PrinterTable() {
       .then(res => { 
         // console.log(res); 
         if (res.status === 200) { 
-          toast.success('Updated Success'); 
+          toast.success('Đã cập nhật thành công!'); 
         } else if (res.status === 400) { 
-          toast.error('Please fill full'); 
+          toast.error('Lỗi!'); 
         } else { 
-          toast.error('An error occurred'); 
+          toast.error('Lỗi!'); 
         } 
       })
       .catch(error => {
         console.error(error);
-        toast.error(`${error}, Please try again!`);
+        toast.error(`${error}, Lỗi!`);
       });
-    
-    
     setSearchData(searchData.map(data => data.id === d.id ? updatedValue : data));
     setFilteredData(filteredData.map(data => data.id === d.id ? updatedValue : data)); 
+    setData(data.map(p => p.id === d.id ? updatedValue : p)); 
     setFilteredData(prevFilteredData => prevFilteredData.filter(data => data.id !== d.id));
+    setSearchData(prevSearchData => prevSearchData.filter(data => data.id !== d.id));
+    //setData(prevData => prevData.filter(data => data.id !== d.id));
   }
   //-----------------------------------------------------------
 
@@ -369,7 +377,29 @@ export default function PrinterTable() {
                   <td>
                     <Link to={`info/${d.id}`} className='btn btn-sm btn-info me-2'><i className="bi bi-info-square"></i></Link>
                     <Link to={`edit/${d.id}`} className="btn btn-sm btn-primary me-2"><i className="bi bi-pencil-square"></i></Link>
-                    <button onClick={() => handleDelete(d.id)} className="btn btn-sm btn-danger"><i className="bi bi-trash3"></i></button>
+                    <button 
+                      data-bs-toggle="modal" 
+                      data-bs-target="#staticBackdrop1"
+                      className="btn btn-sm btn-danger"
+                      onClick={() => setDeleteItem(d.id)} 
+                    ><i className="bi bi-trash3"></i></button>
+                    <div className="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <h1 className="modal-title fs-5" id="staticBackdropLabel">Xác nhận</h1>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div className="modal-body">
+                            Bạn có chắc chắn muốn xóa máy in này không?
+                          </div>
+                          <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={() => handleDelete(deleteItem)} >Xác nhận</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </td>
                 :
                   <td>
@@ -384,6 +414,7 @@ export default function PrinterTable() {
                         data-bs-toggle="modal" 
                         data-bs-target="#staticBackdrop"
                         readOnly
+                        disabled={d.condition==="B" || d.condition==="M"}
                       />
                     </div>
                     <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

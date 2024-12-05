@@ -24,31 +24,21 @@
       "name": "Smart Tank 5101",
       "ip": "10.0.1.837",
       "location": "A5.101",
+      "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
       "status": "E",
       "lastUsed": "05/10/2024 11:32 SA",
       "id": "3",
-      "condition": "U",
-      "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
-    },
-    {
-      "name": "abc",
-      "ip": "123",
-      "location": "f5",
-      "status": "D",
-      "lastUsed": "03/12/2024, 16:44:26",
-      "id": "4",
-      "condition": "R",
-      "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+      "condition": "R"
     },
     {
       "name": "duy hieu",
       "ip": "1910",
       "location": "a10",
-      "status": "E",
+      "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+      "status": "D",
       "lastUsed": "03/12/2024, 17:23:29",
       "id": "5",
-      "condition": "R",
-      "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+      "condition": "U"
     },
     {
       "name": "duyvo",
@@ -64,11 +54,11 @@
       "name": "hieuvo",
       "ip": "123",
       "location": "f8",
+      "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
       "status": "D",
       "lastUsed": "03/12/2024, 17:37:42",
       "id": "7",
-      "condition": "R",
-      "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+      "condition": "U"
     },
     {
       "name": "ádf",
@@ -77,7 +67,7 @@
       "status": "D",
       "lastUsed": "03/12/2024, 18:01:24",
       "id": "8",
-      "condition": "R",
+      "condition": "M",
       "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
     },
     {
@@ -87,7 +77,7 @@
       "status": "E",
       "lastUsed": "03/12/2024, 18:02:02",
       "id": "9",
-      "condition": "R",
+      "condition": "B",
       "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
     },
     {
@@ -97,7 +87,7 @@
       "status": "D",
       "lastUsed": "03/12/2024, 18:18:40",
       "id": "10",
-      "condition": "R",
+      "condition": "U",
       "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
     }
   ]

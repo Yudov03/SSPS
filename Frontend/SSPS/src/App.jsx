@@ -10,11 +10,15 @@ import 'bootstrap/dist/js/bootstrap.bundle.js'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import Login from "./component/login";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   const location = useLocation()
   const noNavbar = location.pathname === "/"
   return (
     <>
+    <ToastContainer/>
     {noNavbar ?
       <Routes>
         <Route path="/" element={<Login />} />
