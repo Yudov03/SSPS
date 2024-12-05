@@ -308,12 +308,22 @@
 
 
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import AxiosInstance from "../Axios";
 import { toast } from "react-toastify";
 import styled from "styled-components";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 export default function AddPrinter() {
+
+  const [show, setShow] = useState(false);
+  const [show2, setShow2] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleClose2 = () => setShow2(false);
+  const handleShow = () => setShow(true);
+  const handleShow2 = () => setShow2(true);
+
   const { id } = useParams();
   const [values, setValues] = useState({
       name: '',
@@ -333,19 +343,21 @@ export default function AddPrinter() {
   }, [])
   const handleSubmit = async (event) => {
       event.preventDefault();
+      handleClose()
       try {
           const res = await AxiosInstance.put(`printers/${id}/`, values);
           console.log(res);
-          if (res.status === 201) {
-              toast.success('Added Success');
+          if (res.status === 200) {
+              handleShow2()
+              //toast.success('Added Success');
           } else if (res.status === 400) {
-              toast.error('Please fill full');
+              toast.error('Hãy điền đủ các trường!');
           } else {
-              toast.error('An error occurred');
+              toast.error('Lỗi!');
           }
       } catch (error) {
           console.error(error);
-          toast.error(`${error}, Please try again!`);
+          toast.error(`${error}, Lỗi!`);
       }
 
   }
@@ -367,7 +379,7 @@ export default function AddPrinter() {
       </StyledHeader>
       <hr />
       <div className="mx-5" style={{}}>
-        <form onSubmit={handleSubmit}>
+        <div>
           <div className="row">
             <div className="col-5">
               <div className="input-file-wrapper">
@@ -403,9 +415,48 @@ export default function AddPrinter() {
             </div>
           </div>
           <div className="d-grid gap-2 col-3 mx-auto pt-5 pb-5">
-            <button className=" btn btn-success">Lưu</button>
+            <button 
+              className=" btn btn-success"
+              onClick={handleShow}
+            >Lưu</button>
+            <Modal
+              show={show}
+              onHide={handleClose}
+              backdrop="static"
+              keyboard={false}
+              centered
+            >
+              <Modal.Header closeButton>
+                <Modal.Title>Xác nhận</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                Bạn có chắc chắn muốn thay đổi thông tin không?
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>Hủy</Button>
+                <Button variant="primary" onClick={handleSubmit}>Xác nhận</Button>
+              </Modal.Footer>
+            </Modal>
+            <Modal
+              show={show2}
+              onHide={handleClose2}
+              backdrop="static"
+              keyboard={false}
+              centered
+            >
+              <Modal.Header closeButton>
+                <Modal.Title>Đã cập nhật thành công!</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                Bạn muốn tiếp tục thay đổi hay xem thông tin chi tiết của máy vừa được cập nhật?
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose2}>Tiếp tục</Button>
+                <Link to={`/printers/info/${id}`} className="btn btn-primary"  onClick={handleClose2}>Đi đến thông tin chi tiết</Link>
+              </Modal.Footer>
+            </Modal>
           </div>
-        </form>
+        </div>
       </div>
     </StyledPrinterList>
   );

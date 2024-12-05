@@ -131,8 +131,16 @@ import AxiosInstance from "../Axios";
 import { toast } from "react-toastify";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 export default function AddPrinter() {
+
+  const [show, setShow] = useState(false);
+  const [show2, setShow2] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleClose2 = () => setShow2(false);
+  const handleShow = () => setShow(true);
+  const handleShow2 = () => setShow2(true);
 
   const currentDateTime = new Date(); 
   const hours = currentDateTime.getHours(); 
@@ -148,15 +156,30 @@ export default function AddPrinter() {
       condition: '',
       description: ''
   })
+  // const [file, setFile] = useState(null);
+  // const handleFileChange = (e) => { 
+  //   setFile(e.target.files[0]); 
+  // };
 
-  const [flag,setFlag] = useState(false);
+  const [id,setID] = useState('');
   const handleSubmit = async (event) => {
       event.preventDefault();
+      handleClose()
+      // const formData = new FormData(); 
+      // formData.append('image', file); 
+      // formData.append('name', values.name); 
+      // formData.append('ip', values.ip); 
+      // formData.append('location', values.location); 
+      // formData.append('status', values.status); 
+      // formData.append('lastUsed', values.lastUsed); 
+      // formData.append('condition', values.condition); 
+      // formData.append('description', values.description);
       try {
           const res = await AxiosInstance.post(`printers/`, values);
-          console.log(res);
+          //console.log(res);
           if (res.status === 201) {
-              setFlag(true);
+              setID(res.data.id)
+              handleShow2()
               //toast.success('Đã thêm máy in thành công!');
               setValues({
                 name: '',
@@ -167,8 +190,6 @@ export default function AddPrinter() {
                 condition: '',
                 description: ''
               });
-              //const successModal = new window.bootstrap.Modal(document.getElementById('staticBackdrop')); 
-              //successModal.hide();
           } else if (res.status === 400) {
               toast.error('Hãy điền đủ các trường!');
           } else {
@@ -185,9 +206,6 @@ export default function AddPrinter() {
       navigate(-1);
   }
   
-  const handleSub = () => {
-
-  }
   return (
     <StyledPrinterList>
       <StyledHeader>
@@ -205,7 +223,7 @@ export default function AddPrinter() {
             <div className="col-5">
               <div className="input-file-wrapper">
                 <label>Ảnh:</label>
-                <input type="file" accept="image/*" />
+                <input type="file" accept="image/*"/>
               </div>
               <div className="">
                 <label style={{ fontWeight: 'bold' }} htmlFor="statusid"></label>
@@ -236,75 +254,47 @@ export default function AddPrinter() {
             </div>
           </div>
           <div className="d-grid gap-2 col-3 mx-auto pt-5 pb-5">
-            <button 
-              data-bs-toggle="modal" 
-              data-bs-target="#staticBackdrop"
+            <button
               className=" btn btn-success"
               //onClick={() => setDeleteItem(d.id)} 
+              onClick={handleShow}
             >Lưu</button>
-            <div 
-              className="modal fade" 
-              id="staticBackdrop" 
-              data-bs-backdrop="static" 
-              data-bs-keyboard="false" 
-              tabIndex="-1" 
-              aria-labelledby="staticBackdropLabel" 
-              aria-hidden="true"
+            <Modal
+              show={show}
+              onHide={handleClose}
+              backdrop="static"
+              keyboard={false}
+              centered
             >
-              <div className="modal-dialog modal-dialog-centered">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <h1 className="modal-title fs-5" id="staticBackdropLabel">Xác nhận</h1>
-                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div className="modal-body">
-                    Bạn có chắc chắn muốn thêm máy in này không?
-                  </div>
-                  <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                    <button 
-                      type="button" 
-                      className="btn btn-primary" 
-                      data-bs-dismiss="modal" 
-                      onClick={handleSubmit} 
-                      data-bs-toggle="modal" 
-                      href="#staticBackdrop1"
-                    >Xác nhận</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {flag && (
-            <div 
-              style={{ display: 'block' }} 
-              className="modal show" 
-              id="staticBackdrop1" 
-              data-bs-backdrop="static" 
-              data-bs-keyboard="false" 
-              tabIndex="-1" 
-              aria-labelledby="staticBackdropLabel1" 
-              aria-hidden="true"
+              <Modal.Header closeButton>
+                <Modal.Title>Xác nhận</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                Bạn có chắc chắn muốn thêm máy in này không?
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>Hủy</Button>
+                <Button variant="primary" onClick={handleSubmit}>Xác nhận</Button>
+              </Modal.Footer>
+            </Modal>
+            <Modal
+              show={show2}
+              onHide={handleClose2}
+              backdrop="static"
+              keyboard={false}
+              centered
             >
-              <div className="modal-dialog modal-dialog-centered">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <h1 
-                      className="modal-title fs-5" 
-                      id="staticBackdropLabel1"
-                    >Đã thêm thành công!</h1>
-                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div className="modal-body">
-                    Bạn muốn tiếp tục thêm máy in hay xem thông tin chi tiết của máy vừa được thêm?
-                  </div>
-                  <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={()=>setFlag(false)}>Tiếp tục</button>
-                    <Link to={`info/${values.id}`} className="btn btn-primary" data-bs-dismiss="modal" onClick={()=>setFlag(false)}>Đi đến thông tin chi tiết</Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-            )}
+              <Modal.Header closeButton>
+                <Modal.Title>Đã thêm thành công!</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                Bạn muốn tiếp tục thêm máy in hay xem thông tin chi tiết của máy vừa được thêm?
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose2}>Tiếp tục</Button>
+                <Link to={`/printers/info/${id}`} className="btn btn-primary"  onClick={handleClose2}>Đi đến thông tin chi tiết</Link>
+              </Modal.Footer>
+            </Modal>
           </div>
         </div>
       </div>
