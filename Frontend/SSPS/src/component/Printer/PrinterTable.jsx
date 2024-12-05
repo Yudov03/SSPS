@@ -155,6 +155,8 @@ import Search from "../Search";
 import styled from 'styled-components';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 export default function PrinterTable() {
 
@@ -382,15 +384,21 @@ export default function PrinterTable() {
                 {mode==="N"? 
                   <td>
                     <Link to={`info/${d.id}`} className='btn btn-sm btn-info me-2'><i className="bi bi-info-square"></i></Link>
-                    <button 
-                      // data-bs-toggle="modal" 
-                      // data-bs-target="#staticBackdrop2"
-                      className="btn btn-sm btn-primary me-2"
-                      onClick={() => {
-                        setSelectItem(d.id);
-                        handleShow();
-                      }} 
-                    ><i className="bi bi-pencil-square"></i></button>
+                    {d.condition==="B"?
+                      <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Không thể chỉnh sửa khi máy in đang hoạt động!</Tooltip>}>
+                        <span>
+                          <button className="btn btn-sm btn-primary me-2" disabled ><i className="bi bi-pencil-square"></i></button>
+                        </span>
+                      </OverlayTrigger>
+                    :
+                      <button 
+                        className="btn btn-sm btn-primary me-2"
+                        onClick={() => {
+                          setSelectItem(d.id);
+                          handleShow();
+                        }} 
+                      ><i className="bi bi-pencil-square"></i></button>
+                    }
                     <Modal
                       show={show}
                       onHide={handleClose}
@@ -409,12 +417,20 @@ export default function PrinterTable() {
                         <Link to={`/printers/edit/${selectItem}`} className="btn btn-primary"  onClick={handleClose}>Xác nhận</Link>
                       </Modal.Footer>
                     </Modal>
-                    <button 
-                      data-bs-toggle="modal" 
-                      data-bs-target="#staticBackdrop1"
-                      className="btn btn-sm btn-danger"
-                      onClick={() => setSelectItem(d.id)} 
-                    ><i className="bi bi-trash3"></i></button>
+                    {d.status==="E"?
+                      <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Không thể xóa khi máy in đã kích hoạt!</Tooltip>}>
+                        <span>
+                          <button className="btn btn-sm btn-danger" disabled ><i className="bi bi-trash3"></i></button>
+                        </span>
+                      </OverlayTrigger>
+                    :
+                      <button 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#staticBackdrop1"
+                        className="btn btn-sm btn-danger"
+                        onClick={() => setSelectItem(d.id)}
+                      ><i className="bi bi-trash3"></i></button>
+                    }
                     <div className="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                       <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
@@ -435,20 +451,35 @@ export default function PrinterTable() {
                   </td>
                 :
                   <td>
-                    <div className="form-check form-switch">
-                      <input 
-                        className="form-check-input" 
-                        type="checkbox" 
-                        role="switch" 
-                        id={d.name} 
-                        checked={d.status === "E"} 
-                        onClick={() => setCurrentItem(d)}
-                        data-bs-toggle="modal" 
-                        data-bs-target="#staticBackdrop"
-                        readOnly
-                        disabled={d.condition==="B" || d.condition==="M"}
-                      />
-                    </div>
+                    {(d.condition==="M" || d.condition==="B") ?
+                      <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Không thể {d.condition==="M"?"kích hoạt":"vô hiệu hóa"} khi máy in đang {d.condition==="M"?"bảo trì":"hoạt động"}!</Tooltip>}>
+                        <div className="form-check form-switch">
+                          <input 
+                            className="form-check-input" 
+                            type="checkbox" 
+                            role="switch" 
+                            id={d.name} 
+                            checked={d.status === "E"} 
+                            readOnly
+                            disabled
+                          />
+                        </div>
+                      </OverlayTrigger>
+                    :
+                      <div className="form-check form-switch">
+                        <input 
+                          className="form-check-input" 
+                          type="checkbox" 
+                          role="switch" 
+                          id={d.name} 
+                          checked={d.status === "E"} 
+                          onClick={() => setCurrentItem(d)}
+                          data-bs-toggle="modal" 
+                          data-bs-target="#staticBackdrop"
+                          readOnly
+                        />
+                      </div>
+                    }
                     <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                       <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">

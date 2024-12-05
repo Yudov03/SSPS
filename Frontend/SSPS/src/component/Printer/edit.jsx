@@ -370,7 +370,7 @@ export default function AddPrinter() {
   return (
     <StyledPrinterList>
       <StyledHeader>
-        <Title>Thêm máy in</Title>
+        <Title>Chỉnh sửa thông tin</Title>
         <>
           <button type="button" className="btn btn-light" onClick={handleBackButton}>
             <i className="bi bi-x-lg"></i> Hủy
