@@ -153,6 +153,8 @@ import Sort from "../Sort";
 import { toast } from "react-toastify";
 import Search from "../Search";
 import styled from 'styled-components';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 export default function PrinterTable() {
 
@@ -167,7 +169,7 @@ export default function PrinterTable() {
   //-----------------------------------------------------------
 
   //DELETE-----------------------------------------------------
-  const [deleteItem, setDeleteItem] = useState();
+  const [selectItem, setSelectItem] = useState();
   const handleDelete = async (id) => {
       //const confirm = window.confirm("Would you like to Delete?");
       if (confirm) {
@@ -338,6 +340,10 @@ export default function PrinterTable() {
   }
   //-----------------------------------------------------------
 
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <PrinterList>
       <div className="d-flex align-items-center justify-content-between">
@@ -376,12 +382,38 @@ export default function PrinterTable() {
                 {mode==="N"? 
                   <td>
                     <Link to={`info/${d.id}`} className='btn btn-sm btn-info me-2'><i className="bi bi-info-square"></i></Link>
-                    <Link to={`edit/${d.id}`} className="btn btn-sm btn-primary me-2"><i className="bi bi-pencil-square"></i></Link>
+                    <button 
+                      // data-bs-toggle="modal" 
+                      // data-bs-target="#staticBackdrop2"
+                      className="btn btn-sm btn-primary me-2"
+                      onClick={() => {
+                        setSelectItem(d.id);
+                        handleShow();
+                      }} 
+                    ><i className="bi bi-pencil-square"></i></button>
+                    <Modal
+                      show={show}
+                      onHide={handleClose}
+                      backdrop="static"
+                      keyboard={false}
+                      centered
+                    >
+                      <Modal.Header closeButton>
+                        <Modal.Title>Xác nhận</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        Bạn có chắc chắn muốn chỉnh sửa thông tin của máy in này?
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>Hủy</Button>
+                        <Link to={`/printers/edit/${selectItem}`} className="btn btn-primary"  onClick={handleClose}>Xác nhận</Link>
+                      </Modal.Footer>
+                    </Modal>
                     <button 
                       data-bs-toggle="modal" 
                       data-bs-target="#staticBackdrop1"
                       className="btn btn-sm btn-danger"
-                      onClick={() => setDeleteItem(d.id)} 
+                      onClick={() => setSelectItem(d.id)} 
                     ><i className="bi bi-trash3"></i></button>
                     <div className="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                       <div className="modal-dialog modal-dialog-centered">
@@ -395,7 +427,7 @@ export default function PrinterTable() {
                           </div>
                           <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={() => handleDelete(deleteItem)} >Xác nhận</button>
+                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={() => handleDelete(selectItem)} >Xác nhận</button>
                           </div>
                         </div>
                       </div>

@@ -4,6 +4,8 @@ import AxiosInstance from "../Axios";
 import { toast } from "react-toastify";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 export default function AddPrinter() {
     const { id } = useParams();
@@ -33,6 +35,10 @@ export default function AddPrinter() {
             navigate(-1); // Go back to the previous page if it's not /edit 
         }
     }
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
   
     return (
         <StyledPrinterList>
@@ -117,7 +123,29 @@ export default function AddPrinter() {
             </div>
             </div>
             <div className="d-grid gap-2 col-3 mx-auto pt-5 pb-5">
-                <Link to={`/printers/edit/${id}`} className="btn btn-sm btn-primary me-2">Chỉnh sửa</Link>
+                {/* <Link to={`/printers/edit/${id}`} className="btn btn-sm btn-primary me-2">Chỉnh sửa</Link> */}
+                <button 
+                    className="btn btn-sm btn-primary me-2"
+                    onClick={() => handleShow()} 
+                >Chỉnh sửa</button>
+                <Modal
+                    show={show}
+                    onHide={handleClose}
+                    backdrop="static"
+                    keyboard={false}
+                    centered
+                >
+                    <Modal.Header closeButton>
+                    <Modal.Title>Xác nhận</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                    Bạn có chắc chắn muốn chỉnh sửa thông tin của máy in này?
+                    </Modal.Body>
+                    <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>Hủy</Button>
+                    <Link to={`/printers/edit/${id}`} className="btn btn-primary"  onClick={handleClose}>Xác nhận</Link>
+                    </Modal.Footer>
+                </Modal>
             </div>
         </div>
         </StyledPrinterList>
