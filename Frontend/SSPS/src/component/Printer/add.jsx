@@ -218,7 +218,7 @@ export default function AddPrinter() {
       </StyledHeader>
       <hr />
       <div className="mx-5" style={{}}>
-        <div>
+        <div class="was-validated">
           <div className="row">
             <div className="col-5">
               <div className="input-file-wrapper">
@@ -228,28 +228,33 @@ export default function AddPrinter() {
               <div className="">
                 <label style={{ fontWeight: 'bold' }} htmlFor="statusid"></label>
                 <div className="form-check form-switch ms-2">
-                    < input className="form-check-input" type="checkbox" role="switch" id="statusid" checked={values.status==="E"} onClick={e => setValues({ ...values, status: values.status==="E"?"D":"E", condition: values.status==="E"?"U":"R" })} readOnly />
+                    < input className="form-check-input" required  type="checkbox" role="switch" id="statusid" checked={values.status==="E"} onClick={e => setValues({ ...values, status: values.status==="E"?"D":"E", condition: values.status==="E"?"U":"R" })} readOnly />
                 </div>
               </div>
             </div>
             <div className="col-1"></div>
             <div className="col-5">
               <label style={{ fontWeight: 'bold' }} htmlFor="nameid">Tên:</label>
-              <input type="text" className="form-control" id="nameid" placeholder="Nhập tên máy in" value={values.name} onChange={e => setValues({ ...values, name: e.target.value })} />
+              <input type="text"  required  className="form-control" id="nameid" placeholder="Nhập tên máy in" value={values.name} onChange={e => setValues({ ...values, name: e.target.value })} />
+              <div class="invalid-feedback">Vui lòng nhập tên máy in </div>
+                     
               <label style={{ fontWeight: 'bold' }} htmlFor="ipid">Địa chỉ IP:</label>
-              <input type="text" className="form-control" id="ipid" placeholder="Nhập ip máy in" value={values.ip} onChange={e => setValues({ ...values, ip: e.target.value })} />
+              <input type="text" className="form-control"  required  id="ipid" placeholder="Nhập ip máy in" value={values.ip} onChange={e => setValues({ ...values, ip: e.target.value })} />
+              <div class="invalid-feedback">Vui lòng nhập ip của máy in </div>
               <div className="">
                 <label style={{ fontWeight: 'bold' }} htmlFor="positionid">Vị trí:</label>
-                  <select className="form-control" id="positionid" value={values.location} onChange={(event) => setValues({ ...values, location: event.target.value })}>
+                  <select className="form-control" required id="positionid" value={values.location} onChange={(event) => setValues({ ...values, location: event.target.value })}>
                     <option value="" disabled>Chọn vị trí</option>
                     <option value="B1.203">B1.203</option>
                     <option value="H6.501">H6.501</option>
                     <option value="A4.402">A4.402</option>
                   </select>
+                  <div class="invalid-feedback">Vui lòng chọn vị trí </div>
               </div>
               <div className="">
                 <label style={{ fontWeight: 'bold' }} htmlFor="descriptionid">Mô tả:</label>
-                <textarea style={{ height: 100 }} id="descriptionid" type="text" className="form-control" placeholder="Nhập mô tả chi tiết" value={values.description} onChange={e => setValues({ ...values, description: e.target.value })} />
+                <textarea style={{ height: 100 }}  required  id="descriptionid" type="text" className="form-control" placeholder="Nhập mô tả chi tiết" value={values.description} onChange={e => setValues({ ...values, description: e.target.value })} />
+                <div class="invalid-feedback">Vui lòng nhập mô tả </div>
               </div>
             </div>
           </div>
