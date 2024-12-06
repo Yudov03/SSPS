@@ -226,7 +226,7 @@ export default function AddPrinter() {
                 <input type="file" accept="image/*"/>
               </div>
               <div className="">
-                <label style={{ fontWeight: 'bold' }} htmlFor="statusid"></label>
+                <label style={{ fontWeight: 'bold' }} htmlFor="statusid" class = "dh">Kích hoạt : </label>
                 <div className="form-check form-switch ms-2">
                     < input className="form-check-input" required  type="checkbox" role="switch" id="statusid" checked={values.status==="E"} onClick={e => setValues({ ...values, status: values.status==="E"?"D":"E", condition: values.status==="E"?"U":"R" })} readOnly />
                 </div>
