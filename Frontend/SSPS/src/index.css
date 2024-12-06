@@ -649,3 +649,41 @@ myselect:hover {
     right: 15px;
   }
 }
+
+/* login  */
+/* Nền xanh dương nhạt */
+.bg-lightblue {
+  background: linear-gradient(to bottom, #bbdefb, #e3f2fd);
+}
+
+/* Card bo góc mềm mại */
+.card {
+  animation-duration: 0.8s;
+  animation-fill-mode: both;
+}
+
+/* Tăng kích thước chữ và độ đậm */
+.text-light {
+  color: #e3f2fd !important;
+}
+
+.text-light.fw-bold {
+  font-size: 2.5rem;
+}
+
+/* Animation từ animate.css */
+.animate__animated.animate__zoomIn {
+  animation-duration: 1.2s;
+}
+
+.animate__animated.animate__pulse {
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+/* Hiệu ứng hover nút */
+.btn-primary:hover {
+  background-color: #1565c0 !important;
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
-import "bootstrap-icons/font/bootstrap-icons.css"; // Import Bootstrap Icons
+import "bootstrap/dist/css/bootstrap.min.css"; 
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -15,18 +15,22 @@ const Login = () => {
   return (
     <div className="d-flex justify-content-center align-items-center vh-100 bg-lightblue">
       <div
-        className="card shadow-lg p-4 rounded"
+        className="card shadow-lg p-5 rounded animate__animated animate__zoomIn"
         style={{
-          width: "400px",
-          background: "linear-gradient(to bottom, #e0f7fa, #80d8ff)",
+          width: "500px",
+          background: "linear-gradient(to bottom, #1976d2, #0d47a1)", // Xanh đậm hơn
+          borderRadius: "30px",
         }}
       >
-        <h2 className="text-center text-white mb-4">
-          <i className="bi bi-person-circle"></i> Đăng Nhập
-        </h2>
+        <h1
+          className="text-center text-light fw-bold mb-4 animate__animated animate__fadeInDown"
+          style={{ fontSize: "2.5rem" }}
+        >
+          <i className="bi bi-printer-fill me-2"></i> BKprinter
+        </h1>
         <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="username" className="form-label text-white">
+          <div className="mb-4">
+            <label htmlFor="username" className="form-label text-light fw-semibold">
               <i className="bi bi-person-fill"></i> Tên người dùng
             </label>
             <input
@@ -39,8 +43,8 @@ const Login = () => {
               style={{ borderRadius: "20px" }}
             />
           </div>
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label text-white">
+          <div className="mb-4">
+            <label htmlFor="password" className="form-label text-light fw-semibold">
               <i className="bi bi-lock-fill"></i> Mật khẩu
             </label>
             <input
@@ -56,11 +60,12 @@ const Login = () => {
           <div className="d-grid">
             <Link
               to={`dashboard`}
-              className="btn btn-primary btn-block"
+              className="btn btn-primary btn-block animate__animated animate__pulse animate__infinite"
               style={{
                 borderRadius: "20px",
-                backgroundColor: "#1976d2",
+                backgroundColor: "#0d47a1",
                 border: "none",
+                fontSize: "1.2rem",
               }}
             >
               <i className="bi bi-box-arrow-in-right"></i> Đăng nhập
@@ -68,9 +73,9 @@ const Login = () => {
           </div>
         </form>
         <div className="text-center mt-4">
-          <p className="text-white">
+          <p className="text-light">
             <i className="bi bi-question-circle"></i> Quên mật khẩu?{" "}
-            <Link to="/reset-password" className="text-warning">
+            <Link to="/reset-password" className="text-warning fw-bold">
               Lấy lại mật khẩu
             </Link>
           </p>
