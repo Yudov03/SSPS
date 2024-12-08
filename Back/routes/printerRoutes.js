@@ -1,9 +1,17 @@
 const express = require('express');
-const { addPrinter, getPrinters } = require('../controllers/printerController');
+const {
+  getPrinters,
+  addPrinter,
+  editPrinter,
+  getPrinterInfo,
+} = require('../controllers/printerController');
+const { verifyToken } = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 
-router.post('/printers', addPrinter);
-router.get('/printers', getPrinters);
+router.get('/', verifyToken, getPrinters);
+router.post('/add', verifyToken, addPrinter);
+router.put('/edit/:id', verifyToken, editPrinter);
+router.get('/info/:id', verifyToken, getPrinterInfo);
 
 module.exports = router;
