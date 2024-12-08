@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "model": "HP LaserJet",
+        "manufacture": "HP",
+        "location": "Office",
+        "building": "Building A",
+        "room": "Room 101",
+        "colorPrinting": true,
+        "availabilityStatus": true
+    },
+    {
+        "id": 2,
+        "model": "Canon Pixma",
+        "manufacture": "Canon",
+        "location": "Office",
+        "building": "Building B",
+        "room": "Room 202",
+        "colorPrinting": false,
+        "availabilityStatus": false
+    },
+    {
+        "id": 3,
+        "model": "Epson EcoTank",
+        "manufacture": "Epson",
+        "location": "Lab",
+        "building": "Building C",
+        "room": "Room 305",
+        "colorPrinting": true,
+        "availabilityStatus": true
+    }
+]
