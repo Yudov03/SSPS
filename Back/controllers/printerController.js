@@ -1,4 +1,4 @@
-const Printer = require('../models/Printer');
+const Printer = require('../models/printer');
 
 // Lấy danh sách máy in
 exports.getPrinters = async (req, res) => {
