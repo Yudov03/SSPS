@@ -363,12 +363,12 @@ export default function PrinterTable() {
         <table className="table table-hover align-middle">
           <thead>
             <tr>
-              <th>Tên máy in <Sort handleSortChange={handleSortChange} type="name" sortDirection={sortDirections.name} /></th>
-              <th>Trạng thái<Sort handleSortChange={handleSortChange} type="status" sortDirection={sortDirections.status} /></th>
-              <th>Tình trạng<Sort handleSortChange={handleSortChange} type="condition" sortDirection={sortDirections.condition} /></th>
-              <th>Địa chỉ IP<Sort handleSortChange={handleSortChange} type="ip" sortDirection={sortDirections.ip} /></th>
-              <th>Vị trí<Sort handleSortChange={handleSortChange} type="location" sortDirection={sortDirections.location} /></th>
-              <th>Sử dụng gần nhất<Sort handleSortChange={handleSortChange} type="lastUsed" sortDirection={sortDirections.lastUsed} /></th>
+              <th><span>Tên máy in </span><Sort handleSortChange={handleSortChange} type="name" sortDirection={sortDirections.name} /></th>
+              <th><span>Trạng thái</span><Sort handleSortChange={handleSortChange} type="status" sortDirection={sortDirections.status} /></th>
+              <th><span>Tình trạng</span><Sort handleSortChange={handleSortChange} type="condition" sortDirection={sortDirections.condition} /></th>
+              <th><span>Địa chỉ IP</span><Sort handleSortChange={handleSortChange} type="ip" sortDirection={sortDirections.ip} /></th>
+              <th><span>Vị trí</span><Sort handleSortChange={handleSortChange} type="location" sortDirection={sortDirections.location} /></th>
+              <th><span>Sử dụng gần nhất</span><Sort handleSortChange={handleSortChange} type="lastUsed" sortDirection={sortDirections.lastUsed} /></th>
               <th style={{ paddingBottom: 14 }}>Thao tác</th>
             </tr>
           </thead>

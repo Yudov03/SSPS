@@ -58,6 +58,19 @@ export default function AddPrinter() {
   const handleBackButton = () => {
       navigate(-1);
   }
+
+  const defaultImageURL = '/src/assets/p.png';
+  const [imageURL, setImageURL] = useState(defaultImageURL); 
+  const previewImage = (event) => { 
+    const file = event.target.files[0]; 
+    const reader = new FileReader(); 
+    reader.onloadend = () => { 
+      setImageURL(reader.result); 
+    }; 
+    reader.readAsDataURL(file); 
+  };
+  const removeImage = () => { setImageURL(defaultImageURL); };
+
   
   return (
     <StyledPrinterList>
@@ -71,34 +84,61 @@ export default function AddPrinter() {
       </StyledHeader>
       <hr />
       <div className="mx-5" style={{}}>
-        <div class="was-validated">
+        <div className="was-validated">
           <div className="row">
             <div className="col-5">
-              <div className="input-file-wrapper">
-                <label>Ảnh:</label>
-                <input type="file" accept="image/*" />
+              <div className="input-file-wrapper mt-3">
+                {/* <label>Ảnh:</label> */}
+                <input type="file" accept="image/*" onChange={previewImage}/>
               </div>
-              <div className="">
-                <label style={{ fontWeight: 'bold' }} htmlFor="statusid"></label>
-                <div className="form-check form-switch ms-2">
-                    < input className="form-check-input" type="checkbox" required  role="switch" id="statusid" checked={values.status==="E"} onClick={e => setValues({ ...values, status: values.status==="E"?"D":"E" })} readOnly />
-                          
-               
+              <div className="image-preview d-flex justify-content-center mt-3" style={{ position: 'relative', display: 'inline-block' }}> 
+                <img src={imageURL} alt="Preview" style={{ width: '150px', height: '150px' }} /> 
+                  {imageURL !== defaultImageURL && ( 
+                    <button onClick={removeImage} style={{ position: 'absolute', 
+                    top: '-15px', 
+                    right: '125px', 
+                    background: 'red', 
+                    color: 'white', 
+                    border: 'none', 
+                    borderRadius: '50%', 
+                    cursor: 'pointer', 
+                    padding: '5px 10px' }
+                    }> X </button> 
+                  )} 
+              </div>
+              <div className="d-flex justify-content-center mt-3">
+                {/* <div className="col-4"></div> */}
+                <div className="">
+                  
+                  <b style={{ color: '#e75d5d' }}>CHƯA KÍCH HOẠT </b>
+                  <div className="form-check form-switch ms-3 me-2" style={{ display: 'inline-block' }}>
+                      < input className="form-check-input" required  type="checkbox" role="switch" id="statusid" checked={values.status==="E"} onClick={e => setValues({ ...values, status: values.status==="E"?"D":"E", condition: values.status==="E"?"U":"R" })} readOnly />
+                  </div>
+                  <b style={{color:"#1976d2"}}>ĐÃ KÍCH HOẠT </b>
                 </div>
               </div>
             </div>
             <div className="col-1"></div>
             <div className="col-5">
+              <div>
               <label style={{ fontWeight: 'bold' }} htmlFor="nameid">Tên:</label>
               <input type="text" className="form-control" id="nameid" required placeholder="Nhập tên máy in" value={values.name} onChange={e => setValues({ ...values, name: e.target.value })} />
-              <div class="invalid-feedback">
+              <div class="invalid-feedback" >
                        Vui lòng nhập tên máy in 
-               </div>  
+               </div>
+              </div>
+
+                <div>
+
+
               <label style={{ fontWeight: 'bold' }} htmlFor="ipid">Địa chỉ IP:</label>
               <input type="text" className="form-control" id="ipid" required placeholder="Nhập ip máy in" value={values.ip} onChange={e => setValues({ ...values, ip: e.target.value })} />
               <div class="invalid-feedback">
                        Vui lòng nhập IP máy in 
-                       </div>  
+               </div>  
+                </div>
+
+
               <div className="">
                 <label style={{ fontWeight: 'bold' }} htmlFor="positionid">Vị trí:</label>
                   <select className="form-control" id="positionid" required value={values.location} onChange={(event) => setValues({ ...values, location: event.target.value })}>
