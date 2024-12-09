@@ -306,6 +306,7 @@ export default function PrinterTable() {
 
   //CHANGE MODE------------------------------------------------
   const [currentItem, setCurrentItem] = useState(null);
+  const [currentCondition, setCurrentCondition] = useState('U');
   const handleChange = (d) => {
     const newStatus = d.status === "E" ? "D" : "E"; 
     const updatedValue = { 
@@ -316,7 +317,7 @@ export default function PrinterTable() {
       status: newStatus, 
       lastUsed: d.lastUsed, 
       id: d.id, 
-      condition: d.condition
+      condition: newStatus==="E"?"R":currentCondition
     };
     AxiosInstance.put(`printers/${d.id}/`, updatedValue) 
       .then(res => { 
@@ -375,8 +376,7 @@ export default function PrinterTable() {
           <tbody>
             {currentData.map(d => (
               <tr key={d.id}>
-                <td style={{ textTransform: 'uppercase'  , maxWidth : '180px' , whiteSpace: 'nowrap', 
-    textOverflow: 'ellipsis' , overflow : 'hidden' }}  className = "respon_dh">{d.name}</td>
+                <td style={{textTransform: 'uppercase'  , maxWidth : '130px' , whiteSpace: 'nowrap', textOverflow: 'ellipsis' , overflow : 'hidden' }}  className = "respon_dh">{d.name}</td>
                 <td>{d.status==="D"? <div style={{ color: "red"}}> Chưa kích hoạt</div>: <div style={{color: "blue"}}>Đã kích hoạt</div>}</td>
                 <td>{d.condition==="R"?"Sẵn sàng":d.condition==="B"?"Đang chạy":d.condition==="M"?"Bảo trì":"Không sử dụng"}</td>
                 <td>{d.ip}</td>
@@ -490,6 +490,16 @@ export default function PrinterTable() {
                           </div>
                           <div className="modal-body">
                             Bạn có chắc chắn muốn thực hiện thao tác này không?
+                            {mode==="E"?
+                            <div className="mt-2">
+                              <label style={{ fontWeight: 'bold' }} htmlFor="conditionid">Lý do tắt máy in là:</label>
+                                <select className="form-control" required id="conditionid" value={currentCondition} onChange={(event) => setCurrentCondition(event.target.value)}>
+                                  <option value="" disabled>Chọn vị trí</option>
+                                  <option value="M">Bảo trì</option>
+                                  <option value="U">Không sử dụng</option>
+                                </select>
+                            </div>
+                            :""}
                           </div>
                           <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>

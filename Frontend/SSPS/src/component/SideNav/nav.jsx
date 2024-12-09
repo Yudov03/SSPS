@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { menuItems } from "./navdata";
 import MenuItem from "./navitem";
 import PageHeader from "./header";
+import { toast } from "react-toastify";
 
 function NavigationMenu(props) {
   const { content } = props;
@@ -25,7 +26,7 @@ function NavigationMenu(props) {
             label= "Đăng xuất"
             isActive= {false}
             isLogout= {true}
-            link= "logout"
+            link= ""
           />
         </Logout>
       </Nav>

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import { useNavigate, useLocation } from 'react-router-dom';
+import { toast } from "react-toastify";
 
 const MenuItem = ({ icon, label, isLogout, link }) => {
   const navigate = useNavigate()
@@ -14,7 +15,9 @@ const MenuItem = ({ icon, label, isLogout, link }) => {
   // }, [locate]);
 
   return (
-    <ListItem $isActive={locate.startsWith(`/${link}`)} $isLogout={isLogout} onClick={() => { navigate(`/${link}`) }}>
+    <ListItem $isActive={locate.startsWith(`/${link}`) && link!==""} $isLogout={isLogout} onClick={() => { navigate(`/${link}`);
+      if (link==="") toast.success("Đăng xuất thành công!");
+    }}>
       <Icon src={icon} alt={`${label} icon`} />
       <Label>{label}</Label>
     </ListItem>
