@@ -6,7 +6,7 @@
       "location": "A4.302",
       "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
       "status": "E",
-      "lastUsed": "18/10/2024 11:52 SA",
+      "lastUsed": "08/10/2024 11:52 SA",
       "id": "1",
       "condition": "R"
     },
@@ -36,7 +36,7 @@
       "location": "A4.402",
       "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
       "status": "D",
-      "lastUsed": "03/12/2024, 17:23 CH",
+      "lastUsed": "03/12/2024 17:23 CH",
       "id": "4",
       "condition": "U"
     },
@@ -46,7 +46,7 @@
       "location": "H6.501",
       "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
       "status": "D",
-      "lastUsed": "03/12/2024, 17:37 SA",
+      "lastUsed": "03/12/2024 17:37 SA",
       "id": "5",
       "condition": "M"
     },
@@ -56,7 +56,7 @@
       "location": "A4.402",
       "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
       "status": "E",
-      "lastUsed": "03/12/2024, 17:37 SA",
+      "lastUsed": "03/12/2024 17:37 SA",
       "id": "6",
       "condition": "R"
     },
@@ -65,7 +65,7 @@
       "ip": "10.0.0.34",
       "location": "B1.203",
       "status": "D",
-      "lastUsed": "03/12/2024, 18:01 SA",
+      "lastUsed": "03/12/2024 18:01 SA",
       "id": "7",
       "condition": "U",
       "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
@@ -75,7 +75,7 @@
       "ip": "10.0.0.72",
       "location": "H6.501",
       "status": "E",
-      "lastUsed": "03/12/2024, 18:02 CH",
+      "lastUsed": "03/12/2024 18:02 CH",
       "id": "8",
       "condition": "B",
       "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
@@ -85,7 +85,7 @@
       "ip": "10.0.0.72",
       "location": "B1.203",
       "status": "D",
-      "lastUsed": "03/12/2024, 18:18 CH",
+      "lastUsed": "03/12/2024 18:18 CH",
       "id": "9",
       "condition": "U",
       "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
@@ -95,7 +95,7 @@
       "ip": "10.0.0.712",
       "location": "H6.501",
       "status": "D",
-      "lastUsed": "04/12/2024, 10:23 SA",
+      "lastUsed": "04/12/2024 10:23 SA",
       "id": "10",
       "condition": "M",
       "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
@@ -105,7 +105,7 @@
       "ip": "10.0.0.121",
       "location": "A4.302",
       "status": "E",
-      "lastUsed": "03/12/2024, 13:37 CH",
+      "lastUsed": "03/12/2024 13:37 CH",
       "id": "11",
       "condition": "R",
       "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
@@ -115,7 +115,7 @@
       "ip": "10.0.1.707",
       "location": "B11.204",
       "status": "D",
-      "lastUsed": "08/12/2024, 06:37 SA",
+      "lastUsed": "08/12/2024 06:37 SA",
       "id": "12",
       "condition": "U",
       "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."

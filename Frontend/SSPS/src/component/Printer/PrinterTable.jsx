@@ -222,6 +222,19 @@ export default function PrinterTable() {
   };
   //-----------------------------------------------------------
 
+  const parseDate = (dateString) => { 
+    const [datePart, timePart, meridiem] = dateString.split(' '); 
+    const [day, month, year] = datePart.split('/'); 
+    let [hours, minutes] = timePart.split(':'); 
+    // Chuyển đổi thời gian 12 giờ thành 24 giờ 
+    if (meridiem === 'SA' && hours === '12') { 
+      hours = '00'; 
+    } else if (meridiem === 'CH' && hours !== '12') { 
+      hours = String(Number(hours) + 12); 
+    } 
+    return new Date(`${year}-${month}-${day}T${hours}:${minutes}:00`); 
+  };
+
   //SORTING----------------------------------------------------
   const [sortDirections, setSortDirections] = useState({
     name: null,
@@ -242,7 +255,7 @@ export default function PrinterTable() {
         } else if (type === 'condition') {
           return isAscending ? a.condition.localeCompare(b.condition) : b.condition.localeCompare(a.condition);
         } else if (type === 'lastUsed') {
-          return isAscending ? new Date(a.lastUsed) - new Date(b.lastUsed) : new Date(b.lastUsed) - new Date(a.lastUsed);
+          return isAscending ? parseDate(a.lastUsed) - parseDate(b.lastUsed) : parseDate(b.lastUsed) - parseDate(a.lastUsed);
         } else if (type === 'ip') {
           return isAscending ? a.ip.localeCompare(b.ip) : b.ip.localeCompare(a.ip);
         } else if (type === 'location') {
@@ -260,7 +273,7 @@ export default function PrinterTable() {
         } else if (type === 'condition') {
           return isAscending ? a.condition.localeCompare(b.condition) : b.condition.localeCompare(a.condition);
         } else if (type === 'lastUsed') {
-          return isAscending ? new Date(a.lastUsed) - new Date(b.lastUsed) : new Date(b.lastUsed) - new Date(a.lastUsed);
+          return isAscending ? parseDate(a.lastUsed) - parseDate(b.lastUsed) : parseDate(b.lastUsed) - parseDate(a.lastUsed);
         } else if (type === 'ip') {
           return isAscending ? a.ip.localeCompare(b.ip) : b.ip.localeCompare(a.ip);
         } else if (type === 'location') {
@@ -343,6 +356,12 @@ export default function PrinterTable() {
   }
   //-----------------------------------------------------------
 
+  const currentDateTime = new Date(); 
+  const hours = currentDateTime.getHours(); 
+  const period = hours < 12 ? "SA" : "CH"; // Xác định SA hoặc CH 
+  const formattedHours = hours % 12 === 0 ? 12 : hours % 12; // Chuyển đổi 24h thành 12h 
+  const formattedDate = `${String(currentDateTime.getDate()).padStart(2, '0')}/${String(currentDateTime.getMonth() + 1).padStart(2, '0')}/${currentDateTime.getFullYear()} ${String(formattedHours).padStart(2, '0')}:${String(currentDateTime.getMinutes()).padStart(2, '0')} ${period}`;
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -381,7 +400,7 @@ export default function PrinterTable() {
                 <td>{d.condition==="R"?"Sẵn sàng":d.condition==="B"?"Đang chạy":d.condition==="M"?"Bảo trì":"Không sử dụng"}</td>
                 <td>{d.ip}</td>
                 <td>{d.location}</td>
-                <td>{d.lastUsed}</td>
+                <td>{d.condition==="B"?formattedDate:d.lastUsed}</td>
                 {mode==="N"? 
                   <td>
                     <Link to={`info/${d.id}`} className='btn btn-sm btn-info me-2'><i className="bi bi-info-square"></i></Link>
