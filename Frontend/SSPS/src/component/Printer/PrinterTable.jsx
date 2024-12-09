@@ -363,19 +363,20 @@ export default function PrinterTable() {
         <table className="table table-hover align-middle">
           <thead>
             <tr>
-              <th><span>Tên máy in </span><Sort handleSortChange={handleSortChange} type="name" sortDirection={sortDirections.name} /></th>
-              <th><span>Trạng thái</span><Sort handleSortChange={handleSortChange} type="status" sortDirection={sortDirections.status} /></th>
-              <th><span>Tình trạng</span><Sort handleSortChange={handleSortChange} type="condition" sortDirection={sortDirections.condition} /></th>
-              <th><span>Địa chỉ IP</span><Sort handleSortChange={handleSortChange} type="ip" sortDirection={sortDirections.ip} /></th>
-              <th><span>Vị trí</span><Sort handleSortChange={handleSortChange} type="location" sortDirection={sortDirections.location} /></th>
-              <th><span>Sử dụng gần nhất</span><Sort handleSortChange={handleSortChange} type="lastUsed" sortDirection={sortDirections.lastUsed} /></th>
+              <th ><span className ="dh">Tên máy in </span><Sort handleSortChange={handleSortChange} type="name" sortDirection={sortDirections.name} /></th>
+              <th><span className ="dh">Trạng thái</span><Sort handleSortChange={handleSortChange} type="status" sortDirection={sortDirections.status} /></th>
+              <th><span className ="dh">Tình trạng</span><Sort handleSortChange={handleSortChange} type="condition" sortDirection={sortDirections.condition} /></th>
+              <th><span className ="dh">Địa chỉ IP</span><Sort handleSortChange={handleSortChange} type="ip" sortDirection={sortDirections.ip} /></th>
+              <th><span className ="dh">Vị trí</span><Sort handleSortChange={handleSortChange} type="location" sortDirection={sortDirections.location} /></th>
+              <th><span className ="dh">Sử dụng gần nhất</span><Sort handleSortChange={handleSortChange} type="lastUsed" sortDirection={sortDirections.lastUsed} /></th>
               <th style={{ paddingBottom: 14 }}>Thao tác</th>
             </tr>
           </thead>
           <tbody>
             {currentData.map(d => (
               <tr key={d.id}>
-                <td style={{ textTransform: 'uppercase' }} >{d.name}</td>
+                <td style={{ textTransform: 'uppercase'  , maxWidth : '180px' , whiteSpace: 'nowrap', 
+    textOverflow: 'ellipsis' , overflow : 'hidden' }}  className = "respon_dh">{d.name}</td>
                 <td>{d.status==="D"? <div style={{ color: "red"}}> Chưa kích hoạt</div>: <div style={{color: "blue"}}>Đã kích hoạt</div>}</td>
                 <td>{d.condition==="R"?"Sẵn sàng":d.condition==="B"?"Đang chạy":d.condition==="M"?"Bảo trì":"Không sử dụng"}</td>
                 <td>{d.ip}</td>
@@ -528,3 +529,4 @@ export default function PrinterTable() {
 const PrinterList = styled.div`
   padding: 0px 24px 10px 24px;
 `;
+

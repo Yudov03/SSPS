@@ -31,9 +31,9 @@
       "condition": "R"
     },
     {
-      "name": "duy hieu",
-      "ip": "1910",
-      "location": "a10",
+      "name": "HP DeskJet Ink Advantage 3775",
+      "ip": "192.168.1.45",
+      "location": "A4.402",
       "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
       "status": "D",
       "lastUsed": "03/12/2024, 17:23:29",
@@ -41,9 +41,9 @@
       "condition": "U"
     },
     {
-      "name": "duyvo",
-      "ip": "1111",
-      "location": "d5",
+      "name": "Samsung Xpress M2020W",
+      "ip": "10.1.1.199",
+      "location": "H6.501",
       "status": "E",
       "lastUsed": "03/12/2024, 17:37:14",
       "id": "6",
@@ -51,9 +51,9 @@
       "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
     },
     {
-      "name": "hieuvo",
-      "ip": "123",
-      "location": "f8",
+      "name": "Epson EcoTank L6170",
+      "ip": "172.16.254.103",
+      "location": "A4.402",
       "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
       "status": "D",
       "lastUsed": "03/12/2024, 17:37:42",
@@ -61,9 +61,9 @@
       "condition": "U"
     },
     {
-      "name": "ádf",
-      "ip": "666",
-      "location": "234",
+      "name": "Epson EcoTank L3150",
+      "ip": "10.10.50.34",
+      "location": "B1.203",
       "status": "D",
       "lastUsed": "03/12/2024, 18:01:24",
       "id": "8",
@@ -71,9 +71,9 @@
       "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
     },
     {
-      "name": "hdsa",
-      "ip": "456",
-      "location": "df",
+      "name": "Brother HL-L2350DW",
+      "ip": "10.0.0.72",
+      "location": "H6.501",
       "status": "E",
       "lastUsed": "03/12/2024, 18:02:02",
       "id": "9",
@@ -81,9 +81,9 @@
       "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
     },
     {
-      "name": "jkl",
-      "ip": "2234",
-      "location": "t6",
+      "name": "Honeywell PC42T",
+      "ip": "10.0.0.72",
+      "location": "B1.203",
       "status": "D",
       "lastUsed": "03/12/2024, 18:18:40",
       "id": "10",
