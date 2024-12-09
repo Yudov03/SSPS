@@ -89,16 +89,25 @@ export default function AddPrinter() {
             </div>
             <div className="col-1"></div>
             <div className="col-5">
+              <div>
               <label style={{ fontWeight: 'bold' }} htmlFor="nameid">Tên:</label>
               <input type="text" className="form-control" id="nameid" required placeholder="Nhập tên máy in" value={values.name} onChange={e => setValues({ ...values, name: e.target.value })} />
-              <div class="invalid-feedback">
+              <div class="invalid-feedback" >
                        Vui lòng nhập tên máy in 
-               </div>  
+               </div>
+              </div>
+
+                <div>
+
+
               <label style={{ fontWeight: 'bold' }} htmlFor="ipid">Địa chỉ IP:</label>
               <input type="text" className="form-control" id="ipid" required placeholder="Nhập ip máy in" value={values.ip} onChange={e => setValues({ ...values, ip: e.target.value })} />
               <div class="invalid-feedback">
                        Vui lòng nhập IP máy in 
-                       </div>  
+               </div>  
+                </div>
+
+
               <div className="">
                 <label style={{ fontWeight: 'bold' }} htmlFor="positionid">Vị trí:</label>
                   <select className="form-control" id="positionid" required value={values.location} onChange={(event) => setValues({ ...values, location: event.target.value })}>
