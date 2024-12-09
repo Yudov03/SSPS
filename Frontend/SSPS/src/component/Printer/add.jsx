@@ -244,7 +244,7 @@ export default function AddPrinter() {
                   {imageURL !== defaultImageURL && ( 
                     <button onClick={removeImage} style={{ position: 'absolute', 
                     top: '-15px', 
-                    right: '95px', 
+                    right: '125px', 
                     background: 'red', 
                     color: 'white', 
                     border: 'none', 

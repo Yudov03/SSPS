@@ -691,7 +691,7 @@ myselect:hover {
 
 .form-switch .form-check-input {
   display :inline-block ; 
-  transform: scale(1.8); 
+  /* transform: scale(1.8);  */
   margin-top: 10px;
   background-color: rgb(222, 140, 140);
   border: 2px solid  #e75d5d; 
@@ -710,3 +710,11 @@ myselect:hover {
   box-shadow: 0 0 5px rgba(25, 118, 210, 0.5); 
 }
 
+
+th span {
+  margin-right: 10px; 
+}
+
+#statusid{
+  transform: scale(1.8);
+}
