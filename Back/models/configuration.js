@@ -13,6 +13,7 @@ const Configuration = sequelize.define('Configuration', {
   },
   allowedFileTypes: {
     type: DataTypes.TEXT,
+    defaultValue: 'pdf,docx,jpg',
   },
   lastChangeDate: {
     type: DataTypes.DATE,
