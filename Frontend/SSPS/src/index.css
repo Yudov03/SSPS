@@ -718,11 +718,3 @@ myselect:hover {
 #statusid{
   transform: scale(1.8);
 }
-@media (max-width: 768px){
-   .respon_dh{
-    max-width : '130px' ; 
-   }
-}
-.respon_dh{
-  
-}

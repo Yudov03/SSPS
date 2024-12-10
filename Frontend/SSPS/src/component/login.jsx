@@ -2,14 +2,22 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"; 
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Đăng nhập với", username, password);
+    if (username==="Võ Lý Đắc Duy" && password ==="123") {
+      navigate("/printers");
+      toast.success("Đăng nhập thành công!")
+    }
+    else toast.error("Tên đăng nhập hoặc mật khẩu không chính xác!")
+    // console.log("Đăng nhập với", username, password);
   };
 
   return (
@@ -26,9 +34,9 @@ const Login = () => {
           className="text-center text-light fw-bold mb-4 animate__animated animate__fadeInDown"
           style={{ fontSize: "2.5rem" }}
         >
-          <i className="bi bi-printer-fill me-2"></i> BKprinter
+          <i className="bi bi-printer-fill me-2"></i> BK SSPS
         </h1>
-        <form onSubmit={handleSubmit}>
+        <form className="needs-validation" novalidate onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="username" className="form-label text-light fw-semibold">
               <i className="bi bi-person-fill"></i> Tên người dùng
@@ -41,6 +49,7 @@ const Login = () => {
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Nhập tên người dùng"
               style={{ borderRadius: "20px" }}
+              required
             />
           </div>
           <div className="mb-4">
@@ -55,11 +64,12 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Nhập mật khẩu"
               style={{ borderRadius: "20px" }}
+              required
             />
           </div>
           <div className="d-grid">
-            <Link
-              to={`dashboard`}
+            <button
+              type="submit"
               className="btn btn-primary btn-block animate__animated animate__pulse animate__infinite"
               style={{
                 borderRadius: "20px",
@@ -69,13 +79,13 @@ const Login = () => {
               }}
             >
               <i className="bi bi-box-arrow-in-right"></i> Đăng nhập
-            </Link>
+            </button>
           </div>
         </form>
         <div className="text-center mt-4">
           <p className="text-light">
             <i className="bi bi-question-circle"></i> Quên mật khẩu?{" "}
-            <Link to="/reset-password" className="text-warning fw-bold">
+            <Link to="/" className="text-warning fw-bold">
               Lấy lại mật khẩu
             </Link>
           </p>
