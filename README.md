@@ -61,8 +61,13 @@ cd SSPS
     ```
 
 Tuy nhiên nếu bạn không tạo mới dữ liệu, bạn có thể dùng dữ liệu trong file db.json của chúng tôi bằng cách mở một terminal mới và thực hiện (không chạy Backend):
-+ ```c cd Frontend ```
-+ json-server --watch db.json
+```c 
+cd Frontend 
+```
+
+```c
+json-server --watch db.json
+```
 
 
 ## Sử dụng
