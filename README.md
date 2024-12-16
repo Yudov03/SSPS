@@ -19,10 +19,14 @@ Dịch vụ in ấn thông minh cho sinh viên tại trường Đại học Bác
 ## Kiến trúc
 gồm 2 phần chính là frontend và backend được hiện thực bằng các công cụ sau:
 + Frontend:
+    + ReactJS
     + Vite
     + Axios
     + Bootstrap
 + Backend:
+    + NodeJS
+
+Ngoài ra, cơ sở dữ liệu được hiện thực bằng MongoDB.
 
 ## Cài đặt
 
@@ -35,7 +39,7 @@ git clone https://github.com/Yudov03/SSPS.git
 cd SSPS
 ```
 + Khởi tạo cở sở dữ liệu 
-    + Tạo database 
+    + Tạo database cho MongoDB
 + Cài đặt các dependencies
     + Đối với Frontend
     ```c
@@ -53,8 +57,12 @@ cd SSPS
     ```
     + Đối với Backend
     ```c
-    
+    node server.js
     ```
+
+Tuy nhiên nếu bạn không tạo mới dữ liệu, bạn có thể dùng dữ liệu trong file db.json của chúng tôi bằng cách mở một terminal mới và thực hiện (không chạy Backend):
++ cd Frontend
++ json-server --watch db.json
 
 ## Người đóng góp
 
