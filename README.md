@@ -64,6 +64,16 @@ Tuy nhiên nếu bạn không tạo mới dữ liệu, bạn có thể dùng d�
 + cd Frontend
 + json-server --watch db.json
 
+
+## Sử dụng
+
+Đăng nhập bằng tài khoản có:
++ tên người dùng: Võ Lý Đắc Duy
++ Mật khẩu: 123
+
+
+Sau đó bạn có thể thực hiện các thao tác thêm, xóa, bật, tắt, xem và chỉnh sửa thông tin máy in.
+
 ## Người đóng góp
 
 Chủ biên: [Võ Lý Đắc Duy](https://github.com/Yudov03)
