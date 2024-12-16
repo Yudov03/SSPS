@@ -1,8 +1,14 @@
-# CNPM
-Đây là SSPS Backend 
-  
-Thành viên:     
-  
-Cách chạy:  
+cài đặt mongodb trong link sau: https://www.mongodb.com/try/download/community
 
-Cảm ơn!  
+mở mongodb compass => add new connection => save & connect
+
+Ấn Create database => nhập Database Name: printerlist và Collection Name: printers => Create
+
+Ở trong code:
+
+- cd duy_be
+
+- npm install
+
+- node server.js
+

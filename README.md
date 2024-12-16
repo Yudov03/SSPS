@@ -60,8 +60,8 @@ cd SSPS
 
 Chủ biên: [Võ Lý Đắc Duy](https://github.com/Yudov03)
 
-Back-end: [Trần Tường Khang](https://github.com/KPoca), [Trần Tuấn Kiệt](https://github.com/trankiet2004)
+Back-end: [Trần Tường Khang](https://github.com/KPoca), [Trần Tuấn Kiệt](https://github.com/trankiet2004), [Võ Lý Đắc Duy](https://github.com/Yudov03)
 
 Front-end: [Võ Lý Đắc Duy](https://github.com/Yudov03), [Võ Duy Hiệu](https://github.com/Doianhtelamem)
 
-Viết báo cáo: [Võ Lý Đắc Duy](https://github.com/Yudov03), [Trần Võ Anh Kiệt]()
+Viết báo cáo: [Võ Lý Đắc Duy](https://github.com/Yudov03), [Võ Duy Hiệu](https://github.com/Doianhtelamem), [Trần Tường Khang](https://github.com/KPoca), [Trần Tuấn Kiệt](https://github.com/trankiet2004), [Trần Võ Anh Kiệt]()
